@@ -10,8 +10,8 @@ module Raudio
 
     # Load music stream from file
     # Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA
-    def self.load(filename : String) : self
-      handle = LibRaudio.load_music_stream(filename)
+    def self.load(filename : String | Path) : self
+      handle = LibRaudio.load_music_stream(filename.to_s)
       raise AudioDeviceError.new("Failed to load music: #{filename}") unless ready?(handle)
       new(handle)
     end
@@ -117,7 +117,7 @@ module Raudio
     #   end
     # end
     # ```
-    def self.load(filename : String, &block)
+    def self.load(filename : String | Path, &block)
       music = load(filename)
       begin
         yield music

@@ -9,8 +9,8 @@ module Raudio
 
     # Load wave data from file
     # Supported formats: WAV, OGG, MP3, FLAC, QOA
-    def self.load(filename : String) : self
-      handle = LibRaudio.load_wave(filename)
+    def self.load(filename : String | Path) : self
+      handle = LibRaudio.load_wave(filename.to_s)
       raise AudioDeviceError.new("Failed to load wave: #{filename}") unless ready?(handle)
       new(handle)
     end
@@ -76,7 +76,7 @@ module Raudio
     #   # Use wave here
     # end
     # ```
-    def self.load(filename : String, &block)
+    def self.load(filename : String | Path, &block)
       wave = load(filename)
       begin
         yield wave

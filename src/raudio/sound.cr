@@ -9,8 +9,8 @@ module Raudio
 
     # Load sound from file
     # Supported formats: WAV, OGG, MP3, FLAC, QOA
-    def self.load(filename : String) : self
-      handle = LibRaudio.load_sound(filename)
+    def self.load(filename : String | Path) : self
+      handle = LibRaudio.load_sound(filename.to_s)
       raise AudioDeviceError.new("Failed to load sound: #{filename}") unless ready?(handle)
       new(handle)
     end
@@ -107,7 +107,7 @@ module Raudio
     #   sleep 1
     # end
     # ```
-    def self.load(filename : String, &block)
+    def self.load(filename : String | Path, &block)
       sound = load(filename)
       begin
         yield sound
