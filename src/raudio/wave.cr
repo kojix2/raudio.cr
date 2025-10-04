@@ -1,0 +1,88 @@
+require "./lib_raudio"
+
+module Raudio
+  # Wave represents raw audio data
+  # Use this for loading and manipulating audio waveforms
+  class Wave
+    def initialize(@handle : LibRaudio::Wave)
+    end
+
+    # Load wave data from file
+    # Supported formats: WAV, OGG, MP3, FLAC, QOA
+    def self.load(filename : String) : self
+      handle = LibRaudio.load_wave(filename)
+      raise AudioDeviceError.new("Failed to load wave: #{filename}") unless ready?(handle)
+      new(handle)
+    end
+
+    # Load wave from memory buffer
+    def self.load_from_memory(file_type : String, data : Bytes) : self
+      handle = LibRaudio.load_wave_from_memory(file_type, data, data.size)
+      raise AudioDeviceError.new("Failed to load wave from memory") unless ready?(handle)
+      new(handle)
+    end
+
+    # Check if wave data is ready
+    def self.ready?(handle : LibRaudio::Wave) : Bool
+      LibRaudio.is_wave_ready(handle)
+    end
+
+    # Check if this wave is ready
+    def ready? : Bool
+      self.class.ready?(@handle)
+    end
+
+    # Export wave data to file
+    def export(filename : String) : Bool
+      LibRaudio.export_wave(@handle, filename)
+    end
+
+    # Export wave data as code (.h)
+    def export_as_code(filename : String) : Bool
+      LibRaudio.export_wave_as_code(@handle, filename)
+    end
+
+    # Copy wave data
+    def copy : Wave
+      handle = LibRaudio.wave_copy(@handle)
+      Wave.new(handle)
+    end
+
+    # Crop wave data to specified samples range
+    def crop(init_sample : Int32, final_sample : Int32)
+      LibRaudio.wave_crop(pointerof(@handle), init_sample, final_sample)
+    end
+
+    # Convert wave data to desired format
+    def format(sample_rate : Int32, sample_size : Int32, channels : Int32)
+      LibRaudio.wave_format(pointerof(@handle), sample_rate, sample_size, channels)
+    end
+
+    # Clean up resources
+    def finalize
+      LibRaudio.unload_wave(@handle)
+    end
+
+    # Get the underlying C struct
+    def to_unsafe
+      @handle
+    end
+
+    # Load wave with automatic cleanup
+    #
+    # Example:
+    # ```
+    # Wave.load("sound.wav") do |wave|
+    #   # Use wave here
+    # end
+    # ```
+    def self.load(filename : String, &block)
+      wave = load(filename)
+      begin
+        yield wave
+      ensure
+        wave.finalize
+      end
+    end
+  end
+end
