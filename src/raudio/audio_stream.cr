@@ -5,9 +5,18 @@ module Raudio
   # Use this for procedural audio or custom audio processing
   class AudioStream
     getter? released
+    @processors : Array(Proc(Pointer(Void), UInt32, Nil))
+    @stream_callback : Proc(Pointer(Void), UInt32, Nil)?
+
+    # Global mixed processors retained to avoid GC
+    @@mixed_processors = [] of Proc(Pointer(Void), UInt32, Nil)
+
+    NOOP_CALLBACK = ->(buffer : Pointer(Void), frames : UInt32) { }
 
     private def initialize(@handle : LibRaudio::AudioStream)
       @released = false
+      @processors = [] of Proc(Pointer(Void), UInt32, Nil)
+      @stream_callback = nil
     end
 
     # Load audio stream (to stream raw audio pcm data)
@@ -29,51 +38,61 @@ module Raudio
 
     # Update audio stream buffers with data
     def update(data : Pointer(Void), frame_count : Int32)
+      raise ReleasedError.new if released?
       LibRaudio.update_audio_stream(@handle, data, frame_count)
     end
 
     # Check if any audio stream buffers requires refill
     def processed? : Bool
+      raise ReleasedError.new if released?
       LibRaudio.is_audio_stream_processed(@handle)
     end
 
     # Play audio stream
     def play
+      raise ReleasedError.new if released?
       LibRaudio.play_audio_stream(@handle)
     end
 
     # Pause audio stream
     def pause
+      raise ReleasedError.new if released?
       LibRaudio.pause_audio_stream(@handle)
     end
 
     # Resume audio stream
     def resume
+      raise ReleasedError.new if released?
       LibRaudio.resume_audio_stream(@handle)
     end
 
     # Check if audio stream is playing
     def playing? : Bool
+      raise ReleasedError.new if released?
       LibRaudio.is_audio_stream_playing(@handle)
     end
 
     # Stop audio stream
     def stop
+      raise ReleasedError.new if released?
       LibRaudio.stop_audio_stream(@handle)
     end
 
     # Set volume for audio stream (1.0 is max level)
     def volume=(volume : Float32)
+      raise ReleasedError.new if released?
       LibRaudio.set_audio_stream_volume(@handle, volume)
     end
 
     # Set pitch for audio stream (1.0 is base level)
     def pitch=(pitch : Float32)
+      raise ReleasedError.new if released?
       LibRaudio.set_audio_stream_pitch(@handle, pitch)
     end
 
     # Set pan for audio stream (0.5 is center)
     def pan=(pan : Float32)
+      raise ReleasedError.new if released?
       LibRaudio.set_audio_stream_pan(@handle, pan)
     end
 
@@ -84,26 +103,53 @@ module Raudio
 
     # Attach audio stream processor to stream
     def attach_processor(processor : LibRaudio::AudioCallback)
+      raise ReleasedError.new if released?
       LibRaudio.attach_audio_stream_processor(@handle, processor)
+      @processors << processor unless @processors.includes?(processor)
     end
 
     # Detach audio stream processor from stream
     def detach_processor(processor : LibRaudio::AudioCallback)
+      raise ReleasedError.new if released?
       LibRaudio.detach_audio_stream_processor(@handle, processor)
+      @processors.delete(processor)
+    end
+
+    # Set per-stream callback (single). Overwrites previous.
+    def callback=(cb : LibRaudio::AudioCallback)
+      raise ReleasedError.new if released?
+      @stream_callback = cb
+      LibRaudio.set_audio_stream_callback(@handle, cb)
+    end
+
+    def clear_callback
+      raise ReleasedError.new if released?
+      @stream_callback = nil
+      LibRaudio.set_audio_stream_callback(@handle, NOOP_CALLBACK)
     end
 
     # Attach audio stream processor to the entire audio pipeline
     def self.attach_mixed_processor(processor : LibRaudio::AudioCallback)
       LibRaudio.attach_audio_mixed_processor(processor)
+      @@mixed_processors << processor unless @@mixed_processors.includes?(processor)
     end
 
     # Detach audio stream processor from the entire audio pipeline
     def self.detach_mixed_processor(processor : LibRaudio::AudioCallback)
       LibRaudio.detach_audio_mixed_processor(processor)
+      @@mixed_processors.delete(processor)
     end
 
     def release
       return if @released
+      # Detach retained callbacks so C side stops referencing them
+      @processors.each do |p|
+        LibRaudio.detach_audio_stream_processor(@handle, p)
+      end
+      if cb = @stream_callback
+        LibRaudio.set_audio_stream_callback(@handle, NOOP_CALLBACK)
+        @stream_callback = nil
+      end
       LibRaudio.unload_audio_stream(@handle)
       @released = true
     end

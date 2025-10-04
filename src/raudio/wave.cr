@@ -37,27 +37,32 @@ module Raudio
 
     # Export wave data to file
     def export(filename : String) : Bool
+      raise ReleasedError.new if released?
       LibRaudio.export_wave(@handle, filename)
     end
 
     # Export wave data as code (.h)
     def export_as_code(filename : String) : Bool
+      raise ReleasedError.new if released?
       LibRaudio.export_wave_as_code(@handle, filename)
     end
 
     # Copy wave data
     def copy : Wave
+      raise ReleasedError.new if released?
       handle = LibRaudio.wave_copy(@handle)
       Wave.new(handle)
     end
 
     # Crop wave data to specified samples range
     def crop(init_sample : Int32, final_sample : Int32)
+      raise ReleasedError.new if released?
       LibRaudio.wave_crop(pointerof(@handle), init_sample, final_sample)
     end
 
     # Convert wave data to desired format
     def format(sample_rate : Int32, sample_size : Int32, channels : Int32)
+      raise ReleasedError.new if released?
       LibRaudio.wave_format(pointerof(@handle), sample_rate, sample_size, channels)
     end
 

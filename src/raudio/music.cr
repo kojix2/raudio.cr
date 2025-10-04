@@ -38,62 +38,74 @@ module Raudio
 
     # Start music playing
     def play
+      raise ReleasedError.new if released?
       LibRaudio.play_music_stream(@handle)
     end
 
     # Check if music is playing
     def playing? : Bool
+      raise ReleasedError.new if released?
       LibRaudio.is_music_stream_playing(@handle)
     end
 
     # Update music buffer with new stream data
     # Call this regularly (every frame) when playing music
     def update
+      raise ReleasedError.new if released?
       LibRaudio.update_music_stream(@handle)
     end
 
     # Stop music playing
     def stop
+      raise ReleasedError.new if released?
       LibRaudio.stop_music_stream(@handle)
     end
 
     # Pause music playing
     def pause
+      raise ReleasedError.new if released?
       LibRaudio.pause_music_stream(@handle)
     end
 
     # Resume paused music playing
     def resume
+      raise ReleasedError.new if released?
       LibRaudio.resume_music_stream(@handle)
     end
 
     # Set volume for music (1.0 is max level)
     def volume=(volume : Float32)
+      raise ReleasedError.new if released?
       LibRaudio.set_music_volume(@handle, volume)
     end
 
     # Set pitch for music (1.0 is base level)
     def pitch=(pitch : Float32)
+      raise ReleasedError.new if released?
       LibRaudio.set_music_pitch(@handle, pitch)
     end
 
     # Set pan for music (0.5 is center)
     def pan=(pan : Float32)
+      raise ReleasedError.new if released?
       LibRaudio.set_music_pan(@handle, pan)
     end
 
     # Get music time length in seconds
     def length : Float32
+      raise ReleasedError.new if released?
       LibRaudio.get_music_time_length(@handle)
     end
 
     # Get current music time played in seconds
     def time_played : Float32
+      raise ReleasedError.new if released?
       LibRaudio.get_music_time_played(@handle)
     end
 
     # Seek music to a position in seconds
     def seek(position : Float32)
+      raise ReleasedError.new if released?
       LibRaudio.seek_music_stream(@handle, position)
     end
 

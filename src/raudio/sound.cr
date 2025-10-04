@@ -43,46 +43,55 @@ module Raudio
 
     # Update sound buffer with new data
     def update(data : Pointer(Void), sample_count : Int32)
+      raise ReleasedError.new if released?
       LibRaudio.update_sound(@handle, data, sample_count)
     end
 
     # Play the sound
     def play
+      raise ReleasedError.new if released?
       LibRaudio.play_sound(@handle)
     end
 
     # Stop the sound
     def stop
+      raise ReleasedError.new if released?
       LibRaudio.stop_sound(@handle)
     end
 
     # Pause the sound
     def pause
+      raise ReleasedError.new if released?
       LibRaudio.pause_sound(@handle)
     end
 
     # Resume the paused sound
     def resume
+      raise ReleasedError.new if released?
       LibRaudio.resume_sound(@handle)
     end
 
     # Check if sound is currently playing
     def playing? : Bool
+      raise ReleasedError.new if released?
       LibRaudio.is_sound_playing(@handle)
     end
 
     # Set volume for the sound (1.0 is max level)
     def volume=(volume : Float32)
+      raise ReleasedError.new if released?
       LibRaudio.set_sound_volume(@handle, volume)
     end
 
     # Set pitch for the sound (1.0 is base level)
     def pitch=(pitch : Float32)
+      raise ReleasedError.new if released?
       LibRaudio.set_sound_pitch(@handle, pitch)
     end
 
     # Set pan for the sound (0.5 is center)
     def pan=(pan : Float32)
+      raise ReleasedError.new if released?
       LibRaudio.set_sound_pan(@handle, pan)
     end
 
