@@ -19,19 +19,19 @@ jobs:
       - uses: crystal-lang/install-crystal@v1
         with:
           crystal: latest
-      - if: ${{ matrix.os == 'windows' }}
-        name: Setup MSVC Developer Command Prompt
+      - name: Setup MSVC Developer Command Prompt
+        if: ${{ matrix.os == 'windows' }}
         uses: ilammy/msvc-dev-cmd@v1
         with:
           arch: x64
       - name: Build native extension (MSVC)
-        if: matrix.os == 'windows'
+        if: ${{ matrix.os == 'windows' }}
         run: make -C ext CC=cl
         env:
           MSYS_NO_PATHCONV: "1"
           MSYS2_ARG_CONV_EXCL: "*"
       - name: Build native extension (POSIX)
-        if: matrix.os != 'windows'
+        if: ${{ matrix.os != 'windows' }}
         run: make -C ext
       - name: Run specs
         run: crystal spec --error-trace
