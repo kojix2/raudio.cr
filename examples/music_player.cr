@@ -6,7 +6,9 @@ require "../src/raudio"
 Raudio::AudioDevice.init
 
 begin
-  music = Raudio::Music.load("resources/music.mp3")
+  music = Raudio::Music.load(
+    File.expand_path("../ext/raudio/examples/resources/country.mp3", __DIR__)
+  )
 
   puts "Music loaded"
   puts "Length: #{music.length} seconds"
@@ -19,13 +21,14 @@ begin
   puts "Playing music... (press Ctrl+C to stop)"
 
   # Update loop - must be called regularly when playing music
+  sec = 0
   loop do
     music.update
 
     # Print current position every second
-    if music.time_played.to_i % 1 == 0
+    if (s = music.time_played.to_i) > sec
       puts "Time: #{music.time_played.round(2)} / #{music.length.round(2)}"
-      sleep 1.second
+      sec = s
     end
 
     break unless music.playing?
