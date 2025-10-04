@@ -25,11 +25,11 @@ begin
     # Print current position every second
     if music.time_played.to_i % 1 == 0
       puts "Time: #{music.time_played.round(2)} / #{music.length.round(2)}"
-      sleep 1
+      sleep 1.second
     end
 
     break unless music.playing?
-    sleep 0.01
+    sleep 10.milliseconds
   end
 
   puts "Music finished"

@@ -1,9 +1,15 @@
+/bin/
 /docs/
 /lib/
-/bin/
-/.shards/
-*.dwarf
+/shards/
 
-# Libraries don't need dependency lock
-# Dependencies will be locked in applications that use them
+*.a
+*.dSYM
+*.dll
+*.dwarf
+*.exe
+*.obj
+*.o
+*.so
+
 /shard.lock

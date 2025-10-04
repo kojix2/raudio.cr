@@ -18,7 +18,7 @@ Raudio::AudioDevice.open do
 
       # Wait while sound is playing
       while sound.playing?
-        sleep 0.01
+        sleep 10.milliseconds
       end
 
       puts "Sound finished"
