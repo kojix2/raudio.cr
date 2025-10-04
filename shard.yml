@@ -6,4 +6,6 @@ authors:
 
 crystal: '>= 1.17.1'
 
+postinstall: make -C ext
+
 license: MIT
