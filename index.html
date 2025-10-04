@@ -104,60 +104,117 @@
 
 
 <div class="main-content">
-<h1><a id="raudio" class="anchor" href="#raudio">  <svg class="octicon-link" aria-hidden="true">
+<h1><a id="raudio.cr" class="anchor" href="#raudio.cr">  <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
-</a>raudio</h1>
-<p><span class="flag orange">TODO</span>  Write a description here</p>
+</a>raudio.cr</h1>
+<p>:sound: <a href="https://github.com/raysan5/raudio">raudio</a> - a simple audio library based on miniaudio - for Crystal</p>
 <h2><a id="installation" class="anchor" href="#installation">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Installation</h2>
-<ol>
-<li>
-<p>Add the dependency to your <code>shard.yml</code>:</p>
+<p>Add to <code>shard.yml</code>:</p>
 <pre><code class="language-yaml">dependencies:
   raudio:
-    github: your-github-user/raudio</code></pre>
-</li>
-<li>
-<p>Run <code>shards install</code></p>
-</li>
-</ol>
+    github: kojix2/raudio.cr</code></pre>
+<p>Run <code>shards install</code>. The native library builds automatically.</p>
 <h2><a id="usage" class="anchor" href="#usage">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Usage</h2>
-<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;raudio&quot;</span></code></pre>
-<p><span class="flag orange">TODO</span>  Write usage instructions here</p>
+<h3><a id="audio-device" class="anchor" href="#audio-device">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Audio device</h3>
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;raudio&quot;</span>
+
+<span class="t">Raudio</span><span class="t">::</span><span class="t">AudioDevice</span>.open <span class="k">do</span>
+  <span class="t">Raudio</span><span class="t">::</span><span class="t">AudioDevice</span>.master_volume <span class="o">=</span> <span class="n">0.8</span>
+<span class="k">end</span></code></pre>
+<h3><a id="sound-playback" class="anchor" href="#sound-playback">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Sound playback</h3>
+<pre><code class="language-crystal"><span class="t">Raudio</span><span class="t">::</span><span class="t">AudioDevice</span>.open <span class="k">do</span>
+  sound <span class="o">=</span> <span class="t">Raudio</span><span class="t">::</span><span class="t">Sound</span>.load(<span class="s">&quot;effect.wav&quot;</span>)
+  sound.volume <span class="o">=</span> <span class="n">0.5</span>
+  sound.play
+
+  <span class="k">while</span> sound.playing?
+    sleep <span class="n">10</span>.milliseconds
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+<h3><a id="music-streaming" class="anchor" href="#music-streaming">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Music streaming</h3>
+<pre><code class="language-crystal"><span class="t">Raudio</span><span class="t">::</span><span class="t">AudioDevice</span>.init
+
+music <span class="o">=</span> <span class="t">Raudio</span><span class="t">::</span><span class="t">Music</span>.load(<span class="s">&quot;background.mp3&quot;</span>)
+music.volume <span class="o">=</span> <span class="n">0.8</span>
+music.play
+
+loop <span class="k">do</span>
+  music.update
+  <span class="k">break</span> <span class="k">unless</span> music.playing?
+  sleep <span class="n">10</span>.milliseconds
+<span class="k">end</span>
+
+<span class="t">Raudio</span><span class="t">::</span><span class="t">AudioDevice</span>.close</code></pre>
+<h3><a id="wave-data" class="anchor" href="#wave-data">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Wave data</h3>
+<pre><code class="language-crystal"><span class="t">Raudio</span><span class="t">::</span><span class="t">AudioDevice</span>.open <span class="k">do</span>
+  wave <span class="o">=</span> <span class="t">Raudio</span><span class="t">::</span><span class="t">Wave</span>.load(<span class="s">&quot;audio.wav&quot;</span>)
+  sound <span class="o">=</span> <span class="t">Raudio</span><span class="t">::</span><span class="t">Sound</span>.from_wave(wave)
+  sound.play
+  wave.export(<span class="s">&quot;output.wav&quot;</span>)
+<span class="k">end</span></code></pre>
+<h2><a id="supported-formats" class="anchor" href="#supported-formats">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Supported formats</h2>
+<p>WAV, OGG, MP3, FLAC, QOA</p>
+<h2><a id="api" class="anchor" href="#api">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>API</h2>
+<ul>
+<li><code><a href="Raudio/AudioDevice.html">Raudio::AudioDevice</a></code> - audio device management</li>
+<li><code><a href="Raudio/Sound.html">Raudio::Sound</a></code> - short audio clips</li>
+<li><code><a href="Raudio/Music.html">Raudio::Music</a></code> - streaming audio</li>
+<li><code><a href="Raudio/Wave.html">Raudio::Wave</a></code> - raw waveform data</li>
+<li><code><a href="Raudio/AudioStream.html">Raudio::AudioStream</a></code> - custom streaming</li>
+</ul>
+<p>Low-level C bindings: <code>Raudio::LibRaudio</code></p>
 <h2><a id="development" class="anchor" href="#development">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Development</h2>
-<p><span class="flag orange">TODO</span>  Write development instructions here</p>
-<h2><a id="contributing" class="anchor" href="#contributing">
+<pre><code class="language-bash">make -C ext        # build native library
+crystal spec       # run tests</code></pre>
+<h2><a id="examples" class="anchor" href="#examples">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
-</a>Contributing</h2>
-<ol>
-<li>Fork it (<a href="https://github.com/your-github-user/raudio/fork">https://github.com/your-github-user/raudio/fork</a>)</li>
-<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
-<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
-<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
-<li>Create a new Pull Request</li>
-</ol>
-<h2><a id="contributors" class="anchor" href="#contributors">
+</a>Examples</h2>
+<p>See <code>examples/</code> directory.</p>
+<h2><a id="license" class="anchor" href="#license">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
-</a>Contributors</h2>
-<ul>
-<li><a href="https://github.com/your-github-user">kojix2</a> - creator and maintainer</li>
-</ul>
+</a>License</h2>
+<p>MIT</p>
 </div>
 </body>
 </html>
