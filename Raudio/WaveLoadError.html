@@ -14,7 +14,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="raudio">
-  <title>Raudio::AudioDeviceError - raudio main</title>
+  <title>Raudio::WaveLoadError - raudio main</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -67,7 +67,7 @@
       
     </li>
   
-  <li class=" current" data-id="raudio/Raudio/AudioDeviceError" data-name="raudio::audiodeviceerror">
+  <li class=" " data-id="raudio/Raudio/AudioDeviceError" data-name="raudio::audiodeviceerror">
       <a href="../Raudio/AudioDeviceError.html">AudioDeviceError</a>
       
     </li>
@@ -122,7 +122,7 @@
       
     </li>
   
-  <li class=" " data-id="raudio/Raudio/WaveLoadError" data-name="raudio::waveloaderror">
+  <li class=" current" data-id="raudio/Raudio/WaveLoadError" data-name="raudio::waveloaderror">
       <a href="../Raudio/WaveLoadError.html">WaveLoadError</a>
       
     </li>
@@ -143,26 +143,15 @@
 
   <span class="kind">
     class
-  </span> Raudio::<wbr>AudioDeviceError
+  </span> Raudio::<wbr>WaveLoadError
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Raudio/AudioDeviceError.html">Raudio::AudioDeviceError</a></li><li class="superclass"><a href="../Raudio/Error.html">Raudio::Error</a></li><li class="superclass">Exception</li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Raudio/WaveLoadError.html">Raudio::WaveLoadError</a></li><li class="superclass"><a href="../Raudio/LoadError.html">Raudio::LoadError</a></li><li class="superclass"><a href="../Raudio/Error.html">Raudio::Error</a></li><li class="superclass">Exception</li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
-
-  <h2>
-    <a id="overview" class="anchor" href="#overview">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Overview
-  </h2>
-
-  <p>Device related errors</p>
 
 
 
@@ -189,7 +178,7 @@
   </h2>
   
     
-      <a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/errors.cr#L6" target="_blank">
+      <a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/errors.cr#L17" target="_blank">
         raudio/errors.cr
       </a>
     
@@ -210,6 +199,37 @@
 
 
   <div class="methods-inherited">
+    
+      
+
+  <h3>Instance methods inherited from class <code><a href="../Raudio/LoadError.html">Raudio::LoadError</a></code></h3>
+  
+  
+    <a href="../Raudio/LoadError.html#path%3AString%3F-instance-method" class="tooltip">
+      <span>path : String?</span>
+    path</a>
+    
+  
+
+
+      
+
+  <h3>Constructor methods inherited from class <code><a href="../Raudio/LoadError.html">Raudio::LoadError</a></code></h3>
+  
+  
+    <a href="../Raudio/LoadError.html#new%28message%3D%22Loaderror%22%2Cpath%3AString%7CNil%3Dnil%29-class-method" class="tooltip">
+      <span>new(message = <span class="s">&quot;Load error&quot;</span>, path : String | Nil = <span class="n">nil</span>)</span>
+    new</a>
+    
+  
+
+
+      
+
+
+      
+
+
     
       
 

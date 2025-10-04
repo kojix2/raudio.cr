@@ -14,7 +14,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="raudio">
-  <title>Raudio::AudioDeviceError - raudio main</title>
+  <title>Raudio::LoadError - raudio main</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -67,7 +67,7 @@
       
     </li>
   
-  <li class=" current" data-id="raudio/Raudio/AudioDeviceError" data-name="raudio::audiodeviceerror">
+  <li class=" " data-id="raudio/Raudio/AudioDeviceError" data-name="raudio::audiodeviceerror">
       <a href="../Raudio/AudioDeviceError.html">AudioDeviceError</a>
       
     </li>
@@ -87,7 +87,7 @@
       
     </li>
   
-  <li class=" " data-id="raudio/Raudio/LoadError" data-name="raudio::loaderror">
+  <li class=" current" data-id="raudio/Raudio/LoadError" data-name="raudio::loaderror">
       <a href="../Raudio/LoadError.html">LoadError</a>
       
     </li>
@@ -143,12 +143,12 @@
 
   <span class="kind">
     class
-  </span> Raudio::<wbr>AudioDeviceError
+  </span> Raudio::<wbr>LoadError
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Raudio/AudioDeviceError.html">Raudio::AudioDeviceError</a></li><li class="superclass"><a href="../Raudio/Error.html">Raudio::Error</a></li><li class="superclass">Exception</li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Raudio/LoadError.html">Raudio::LoadError</a></li><li class="superclass"><a href="../Raudio/Error.html">Raudio::Error</a></li><li class="superclass">Exception</li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -162,7 +162,7 @@
     Overview
   </h2>
 
-  <p>Device related errors</p>
+  <p>Generic load error with optional path</p>
 
 
 
@@ -173,6 +173,24 @@
 
 
 
+
+  <h2>
+    <a id="direct-known-subclasses" class="anchor" href="#direct-known-subclasses">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Direct Known Subclasses
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type"><a href="../Raudio/MusicLoadError.html">Raudio::MusicLoadError</a></li>
+    
+      <li class="other-type"><a href="../Raudio/SoundLoadError.html">Raudio::SoundLoadError</a></li>
+    
+      <li class="other-type"><a href="../Raudio/WaveLoadError.html">Raudio::WaveLoadError</a></li>
+    
+  </ul>
 
 
 
@@ -189,7 +207,7 @@
   </h2>
   
     
-      <a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/errors.cr#L6" target="_blank">
+      <a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/errors.cr#L9" target="_blank">
         raudio/errors.cr
       </a>
     
@@ -201,12 +219,46 @@
 
 
   
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28message%3D%22Loaderror%22%2Cpath%3AString%7CNil%3Dnil%29-class-method" class="signature"><strong>.new</strong>(message = <span class="s">&quot;Load error&quot;</span>, path : String | Nil = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+  </ul>
+
 
   
 
   
 
   
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#path%3AString%3F-instance-method" class="signature"><strong>#path</strong> : String?</a>
+        
+      </li>
+    
+  </ul>
+
 
 
   <div class="methods-inherited">
@@ -266,12 +318,64 @@
   </div>
 
   
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(message=&quot;Loaderror&quot;,path:String|Nil=nil)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(message = <span class="s">&quot;Load error&quot;</span>, path : String | Nil = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#new%28message%3D%22Loaderror%22%2Cpath%3AString%7CNil%3Dnil%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/errors.cr#L12" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
 
   
 
   
 
   
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="path:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>path</strong> : String?
+
+        <a class="method-permalink" href="#path%3AString%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/errors.cr#L10" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
 
 
 </div>
