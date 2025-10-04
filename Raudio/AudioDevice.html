@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.16.3">
+<meta name="crystal_docs.project_version" content="main">
+<meta name="crystal_docs.project_name" content="raudio">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="raudio">
+  <title>Raudio::AudioDevice - raudio main</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          raudio
+        </a>
+      </h1>
+
+      <span class="project-version">
+        main
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="raudio/Raudio" data-name="raudio">
+      <a href="../Raudio.html">Raudio</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="raudio/Raudio/AudioDevice" data-name="raudio::audiodevice">
+      <a href="../Raudio/AudioDevice.html">AudioDevice</a>
+      
+    </li>
+  
+  <li class=" " data-id="raudio/Raudio/AudioDeviceError" data-name="raudio::audiodeviceerror">
+      <a href="../Raudio/AudioDeviceError.html">AudioDeviceError</a>
+      
+    </li>
+  
+  <li class=" " data-id="raudio/Raudio/AudioStream" data-name="raudio::audiostream">
+      <a href="../Raudio/AudioStream.html">AudioStream</a>
+      
+    </li>
+  
+  <li class=" " data-id="raudio/Raudio/Music" data-name="raudio::music">
+      <a href="../Raudio/Music.html">Music</a>
+      
+    </li>
+  
+  <li class=" " data-id="raudio/Raudio/Sound" data-name="raudio::sound">
+      <a href="../Raudio/Sound.html">Sound</a>
+      
+    </li>
+  
+  <li class=" " data-id="raudio/Raudio/Wave" data-name="raudio::wave">
+      <a href="../Raudio/Wave.html">Wave</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">
+    class
+  </span> Raudio::<wbr>AudioDevice
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Raudio/AudioDevice.html">Raudio::AudioDevice</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Audio device management (singleton pattern)
+Handles initialization and cleanup of the audio device</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_device.cr#L6" target="_blank">
+        raudio/audio_device.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+  
+
+  
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#close-class-method" class="signature"><strong>.close</strong></a>
+        
+          <div class="summary"><p>Close the audio device This is automatically called at program exit if init was called</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#init-class-method" class="signature"><strong>.init</strong></a>
+        
+          <div class="summary"><p>Initialize the audio device This is automatically called when using the block form</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#master_volume%3AFloat32-class-method" class="signature"><strong>.master_volume</strong> : Float32</a>
+        
+          <div class="summary"><p>Get master volume (listener)</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#master_volume%3D%28volume%3AFloat32%29-class-method" class="signature"><strong>.master_volume=</strong>(volume : Float32)</a>
+        
+          <div class="summary"><p>Set master volume (listener)</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#open%28%26%29-class-method" class="signature"><strong>.open</strong>(&)</a>
+        
+          <div class="summary"><p>Open audio device with automatic cleanup This is the recommended way to use the audio device</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ready%3F%3ABool-class-method" class="signature"><strong>.ready?</strong> : Bool</a>
+        
+          <div class="summary"><p>Check if audio device is ready</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+  
+
+  
+
+
+  <div class="methods-inherited">
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+  </div>
+
+  
+
+  
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="close-class-method">
+      <div class="signature">
+        
+        def self.<strong>close</strong>
+
+        <a class="method-permalink" href="#close-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Close the audio device
+This is automatically called at program exit if init was called</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_device.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="init-class-method">
+      <div class="signature">
+        
+        def self.<strong>init</strong>
+
+        <a class="method-permalink" href="#init-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Initialize the audio device
+This is automatically called when using the block form</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_device.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="master_volume:Float32-class-method">
+      <div class="signature">
+        
+        def self.<strong>master_volume</strong> : Float32
+
+        <a class="method-permalink" href="#master_volume%3AFloat32-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Get master volume (listener)</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_device.cr#L37" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="master_volume=(volume:Float32)-class-method">
+      <div class="signature">
+        
+        def self.<strong>master_volume=</strong>(volume : Float32)
+
+        <a class="method-permalink" href="#master_volume%3D%28volume%3AFloat32%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Set master volume (listener)</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_device.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="open(&amp;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>open</strong>(&)
+
+        <a class="method-permalink" href="#open%28%26%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Open audio device with automatic cleanup
+This is the recommended way to use the audio device</p>
+<p>Example:</p>
+<pre><code class="language-crystal"><span class="t">AudioDevice</span>.open <span class="k">do</span>
+  <span class="c"># Use audio here</span>
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_device.cr#L50" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ready?:Bool-class-method">
+      <div class="signature">
+        
+        def self.<strong>ready?</strong> : Bool
+
+        <a class="method-permalink" href="#ready%3F%3ABool-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Check if audio device is ready</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_device.cr#L27" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+  
+
+  
+
+
+</div>
+
+</body>
+</html>

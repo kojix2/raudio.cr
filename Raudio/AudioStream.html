@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.16.3">
+<meta name="crystal_docs.project_version" content="main">
+<meta name="crystal_docs.project_name" content="raudio">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="raudio">
+  <title>Raudio::AudioStream - raudio main</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          raudio
+        </a>
+      </h1>
+
+      <span class="project-version">
+        main
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="raudio/Raudio" data-name="raudio">
+      <a href="../Raudio.html">Raudio</a>
+      
+        <ul>
+  
+  <li class=" " data-id="raudio/Raudio/AudioDevice" data-name="raudio::audiodevice">
+      <a href="../Raudio/AudioDevice.html">AudioDevice</a>
+      
+    </li>
+  
+  <li class=" " data-id="raudio/Raudio/AudioDeviceError" data-name="raudio::audiodeviceerror">
+      <a href="../Raudio/AudioDeviceError.html">AudioDeviceError</a>
+      
+    </li>
+  
+  <li class=" current" data-id="raudio/Raudio/AudioStream" data-name="raudio::audiostream">
+      <a href="../Raudio/AudioStream.html">AudioStream</a>
+      
+    </li>
+  
+  <li class=" " data-id="raudio/Raudio/Music" data-name="raudio::music">
+      <a href="../Raudio/Music.html">Music</a>
+      
+    </li>
+  
+  <li class=" " data-id="raudio/Raudio/Sound" data-name="raudio::sound">
+      <a href="../Raudio/Sound.html">Sound</a>
+      
+    </li>
+  
+  <li class=" " data-id="raudio/Raudio/Wave" data-name="raudio::wave">
+      <a href="../Raudio/Wave.html">Wave</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">
+    class
+  </span> Raudio::<wbr>AudioStream
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Raudio/AudioStream.html">Raudio::AudioStream</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>AudioStream represents a custom audio stream
+Use this for procedural audio or custom audio processing</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L6" target="_blank">
+        raudio/audio_stream.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+  
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#load%28sample_rate%3AUInt32%2Csample_size%3AUInt32%2Cchannels%3AUInt32%29%3Aself-class-method" class="signature"><strong>.load</strong>(sample_rate : UInt32, sample_size : UInt32, channels : UInt32) : <span class="k">self</span></a>
+        
+          <div class="summary"><p>Load audio stream (to stream raw audio pcm data)</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28handle%3ALibRaudio%3A%3AAudioStream%29-class-method" class="signature"><strong>.new</strong>(handle : LibRaudio::AudioStream)</a>
+        
+      </li>
+    
+  </ul>
+
+
+  
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#attach_mixed_processor%28processor%3ALibRaudio%3A%3AAudioCallback%29-class-method" class="signature"><strong>.attach_mixed_processor</strong>(processor : LibRaudio::AudioCallback)</a>
+        
+          <div class="summary"><p>Attach audio stream processor to the entire audio pipeline</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#buffer_size_default%3D%28size%3AInt32%29-class-method" class="signature"><strong>.buffer_size_default=</strong>(size : Int32)</a>
+        
+          <div class="summary"><p>Default size for new audio streams</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#detach_mixed_processor%28processor%3ALibRaudio%3A%3AAudioCallback%29-class-method" class="signature"><strong>.detach_mixed_processor</strong>(processor : LibRaudio::AudioCallback)</a>
+        
+          <div class="summary"><p>Detach audio stream processor from the entire audio pipeline</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ready%3F%28handle%3ALibRaudio%3A%3AAudioStream%29%3ABool-class-method" class="signature"><strong>.ready?</strong>(handle : LibRaudio::AudioStream) : Bool</a>
+        
+          <div class="summary"><p>Check if audio stream is ready</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+  
+
+  
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#attach_processor%28processor%3ALibRaudio%3A%3AAudioCallback%29-instance-method" class="signature"><strong>#attach_processor</strong>(processor : LibRaudio::AudioCallback)</a>
+        
+          <div class="summary"><p>Attach audio stream processor to stream</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#detach_processor%28processor%3ALibRaudio%3A%3AAudioCallback%29-instance-method" class="signature"><strong>#detach_processor</strong>(processor : LibRaudio::AudioCallback)</a>
+        
+          <div class="summary"><p>Detach audio stream processor from stream</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#finalize-instance-method" class="signature"><strong>#finalize</strong></a>
+        
+          <div class="summary"><p>Clean up resources</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pan%3D%28pan%3AFloat32%29-instance-method" class="signature"><strong>#pan=</strong>(pan : Float32)</a>
+        
+          <div class="summary"><p>Set pan for audio stream (0.5 is center)</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pause-instance-method" class="signature"><strong>#pause</strong></a>
+        
+          <div class="summary"><p>Pause audio stream</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#pitch%3D%28pitch%3AFloat32%29-instance-method" class="signature"><strong>#pitch=</strong>(pitch : Float32)</a>
+        
+          <div class="summary"><p>Set pitch for audio stream (1.0 is base level)</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#play-instance-method" class="signature"><strong>#play</strong></a>
+        
+          <div class="summary"><p>Play audio stream</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#playing%3F%3ABool-instance-method" class="signature"><strong>#playing?</strong> : Bool</a>
+        
+          <div class="summary"><p>Check if audio stream is playing</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#processed%3F%3ABool-instance-method" class="signature"><strong>#processed?</strong> : Bool</a>
+        
+          <div class="summary"><p>Check if any audio stream buffers requires refill</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ready%3F%3ABool-instance-method" class="signature"><strong>#ready?</strong> : Bool</a>
+        
+          <div class="summary"><p>Check if this audio stream is ready</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#resume-instance-method" class="signature"><strong>#resume</strong></a>
+        
+          <div class="summary"><p>Resume audio stream</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#stop-instance-method" class="signature"><strong>#stop</strong></a>
+        
+          <div class="summary"><p>Stop audio stream</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#to_unsafe%3ARaudio%3A%3ALibRaudio%3A%3AAudioStream-instance-method" class="signature"><strong>#to_unsafe</strong> : Raudio::LibRaudio::AudioStream</a>
+        
+          <div class="summary"><p>Get the underlying C struct</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#update%28data%3APointer%28Void%29%2Cframe_count%3AInt32%29-instance-method" class="signature"><strong>#update</strong>(data : Pointer(Void), frame_count : Int32)</a>
+        
+          <div class="summary"><p>Update audio stream buffers with data</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#volume%3D%28volume%3AFloat32%29-instance-method" class="signature"><strong>#volume=</strong>(volume : Float32)</a>
+        
+          <div class="summary"><p>Set volume for audio stream (1.0 is max level)</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <div class="methods-inherited">
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+  </div>
+
+  
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="load(sample_rate:UInt32,sample_size:UInt32,channels:UInt32):self-class-method">
+      <div class="signature">
+        
+        def self.<strong>load</strong>(sample_rate : UInt32, sample_size : UInt32, channels : UInt32) : <span class="k">self</span>
+
+        <a class="method-permalink" href="#load%28sample_rate%3AUInt32%2Csample_size%3AUInt32%2Cchannels%3AUInt32%29%3Aself-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Load audio stream (to stream raw audio pcm data)</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(handle:LibRaudio::AudioStream)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(handle : LibRaudio::AudioStream)
+
+        <a class="method-permalink" href="#new%28handle%3ALibRaudio%3A%3AAudioStream%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L7" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+  
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="attach_mixed_processor(processor:LibRaudio::AudioCallback)-class-method">
+      <div class="signature">
+        
+        def self.<strong>attach_mixed_processor</strong>(processor : LibRaudio::AudioCallback)
+
+        <a class="method-permalink" href="#attach_mixed_processor%28processor%3ALibRaudio%3A%3AAudioCallback%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Attach audio stream processor to the entire audio pipeline</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L93" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="buffer_size_default=(size:Int32)-class-method">
+      <div class="signature">
+        
+        def self.<strong>buffer_size_default=</strong>(size : Int32)
+
+        <a class="method-permalink" href="#buffer_size_default%3D%28size%3AInt32%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Default size for new audio streams</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L78" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="detach_mixed_processor(processor:LibRaudio::AudioCallback)-class-method">
+      <div class="signature">
+        
+        def self.<strong>detach_mixed_processor</strong>(processor : LibRaudio::AudioCallback)
+
+        <a class="method-permalink" href="#detach_mixed_processor%28processor%3ALibRaudio%3A%3AAudioCallback%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Detach audio stream processor from the entire audio pipeline</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L98" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ready?(handle:LibRaudio::AudioStream):Bool-class-method">
+      <div class="signature">
+        
+        def self.<strong>ready?</strong>(handle : LibRaudio::AudioStream) : Bool
+
+        <a class="method-permalink" href="#ready%3F%28handle%3ALibRaudio%3A%3AAudioStream%29%3ABool-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Check if audio stream is ready</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+  
+
+  
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="attach_processor(processor:LibRaudio::AudioCallback)-instance-method">
+      <div class="signature">
+        
+        def <strong>attach_processor</strong>(processor : LibRaudio::AudioCallback)
+
+        <a class="method-permalink" href="#attach_processor%28processor%3ALibRaudio%3A%3AAudioCallback%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Attach audio stream processor to stream</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L83" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="detach_processor(processor:LibRaudio::AudioCallback)-instance-method">
+      <div class="signature">
+        
+        def <strong>detach_processor</strong>(processor : LibRaudio::AudioCallback)
+
+        <a class="method-permalink" href="#detach_processor%28processor%3ALibRaudio%3A%3AAudioCallback%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Detach audio stream processor from stream</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L88" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="finalize-instance-method">
+      <div class="signature">
+        
+        def <strong>finalize</strong>
+
+        <a class="method-permalink" href="#finalize-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Clean up resources</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L103" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pan=(pan:Float32)-instance-method">
+      <div class="signature">
+        
+        def <strong>pan=</strong>(pan : Float32)
+
+        <a class="method-permalink" href="#pan%3D%28pan%3AFloat32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Set pan for audio stream (0.5 is center)</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L73" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pause-instance-method">
+      <div class="signature">
+        
+        def <strong>pause</strong>
+
+        <a class="method-permalink" href="#pause-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Pause audio stream</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L43" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="pitch=(pitch:Float32)-instance-method">
+      <div class="signature">
+        
+        def <strong>pitch=</strong>(pitch : Float32)
+
+        <a class="method-permalink" href="#pitch%3D%28pitch%3AFloat32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Set pitch for audio stream (1.0 is base level)</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L68" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="play-instance-method">
+      <div class="signature">
+        
+        def <strong>play</strong>
+
+        <a class="method-permalink" href="#play-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Play audio stream</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L38" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="playing?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>playing?</strong> : Bool
+
+        <a class="method-permalink" href="#playing%3F%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Check if audio stream is playing</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L53" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="processed?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>processed?</strong> : Bool
+
+        <a class="method-permalink" href="#processed%3F%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Check if any audio stream buffers requires refill</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L33" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ready?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>ready?</strong> : Bool
+
+        <a class="method-permalink" href="#ready%3F%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Check if this audio stream is ready</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L23" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="resume-instance-method">
+      <div class="signature">
+        
+        def <strong>resume</strong>
+
+        <a class="method-permalink" href="#resume-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Resume audio stream</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L48" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="stop-instance-method">
+      <div class="signature">
+        
+        def <strong>stop</strong>
+
+        <a class="method-permalink" href="#stop-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Stop audio stream</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L58" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="to_unsafe:Raudio::LibRaudio::AudioStream-instance-method">
+      <div class="signature">
+        
+        def <strong>to_unsafe</strong> : Raudio::LibRaudio::AudioStream
+
+        <a class="method-permalink" href="#to_unsafe%3ARaudio%3A%3ALibRaudio%3A%3AAudioStream-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Get the underlying C struct</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L108" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="update(data:Pointer(Void),frame_count:Int32)-instance-method">
+      <div class="signature">
+        
+        def <strong>update</strong>(data : Pointer(Void), frame_count : Int32)
+
+        <a class="method-permalink" href="#update%28data%3APointer%28Void%29%2Cframe_count%3AInt32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Update audio stream buffers with data</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L28" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="volume=(volume:Float32)-instance-method">
+      <div class="signature">
+        
+        def <strong>volume=</strong>(volume : Float32)
+
+        <a class="method-permalink" href="#volume%3D%28volume%3AFloat32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Set volume for audio stream (1.0 is max level)</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/911d77dc6e21f8b08e7bdd038a123f18e5d85f1e/src/raudio/audio_stream.cr#L63" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+</div>
+
+</body>
+</html>
