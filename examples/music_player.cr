@@ -15,6 +15,8 @@ begin
 
   # Set volume to 80%
   music.volume = 0.8
+  # Disable looping so it stops after one play
+  music.looping = false
 
   # Start playing
   music.play

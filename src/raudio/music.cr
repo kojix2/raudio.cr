@@ -103,6 +103,16 @@ module Raudio
       LibRaudio.get_music_time_played(@handle)
     end
 
+    # Loop flag (default true in raudio)
+    def looping? : Bool
+      @handle.looping
+    end
+
+    # Enable/disable looping (set false to stop at end)
+    def looping=(value : Bool)
+      @handle.looping = value
+    end
+
     # Seek music to a position in seconds
     def seek(position : Float32)
       raise ReleasedError.new if released?

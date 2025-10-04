@@ -13,7 +13,8 @@ Raudio::AudioDevice.open do
   # Load and play a sound with automatic cleanup
   begin
     Raudio::Sound.load(
-      File.expand_path("../ext/raudio/examples/resources/target.ogg", __DIR__)
+      [File.expand_path("../ext/raudio/examples/resources/target.ogg", __DIR__),
+       File.expand_path("../ext/raudio/examples/resources/weird.wav", __DIR__)].sample
     ) do |sound|
       puts "Playing sound..."
       sound.play
