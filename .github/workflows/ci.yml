@@ -33,11 +33,6 @@ jobs:
       - name: Build native extension (POSIX)
         if: ${{ matrix.os != 'windows' }}
         run: make -C ext
-      - name: Setup ALSA dummy sound device
-        if: ${{ matrix.os == 'ubuntu' }}
-        run: |
-          sudo modprobe snd-dummy
-          aplay -l
       - name: Run specs
         run: crystal spec --error-trace
       - name: Build and run simple_sound example
