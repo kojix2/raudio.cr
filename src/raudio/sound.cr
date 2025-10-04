@@ -14,14 +14,14 @@ module Raudio
     # Supported formats: WAV, OGG, MP3, FLAC, QOA
     def self.load(filename : String | Path) : self
       handle = LibRaudio.load_sound(filename.to_s)
-      raise AudioDeviceError.new("Failed to load sound: #{filename}") unless ready?(handle)
+      raise SoundLoadError.new("Failed to load sound", filename.to_s) unless ready?(handle)
       new(handle)
     end
 
     # Load sound from wave data
     def self.from_wave(wave : Wave) : self
       handle = LibRaudio.load_sound_from_wave(wave.to_unsafe)
-      raise AudioDeviceError.new("Failed to load sound from wave") unless ready?(handle)
+      raise SoundLoadError.new("Failed to load sound from wave") unless ready?(handle)
       new(handle)
     end
 

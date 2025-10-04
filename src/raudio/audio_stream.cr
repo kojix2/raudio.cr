@@ -13,7 +13,7 @@ module Raudio
     # Load audio stream (to stream raw audio pcm data)
     def self.load(sample_rate : UInt32, sample_size : UInt32, channels : UInt32) : self
       handle = LibRaudio.load_audio_stream(sample_rate, sample_size, channels)
-      raise AudioDeviceError.new("Failed to load audio stream") unless ready?(handle)
+      raise AudioStreamError.new("Failed to load audio stream") unless ready?(handle)
       new(handle)
     end
 
