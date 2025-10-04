@@ -5,7 +5,10 @@ module Raudio
   # Use this for long audio tracks (background music, etc.)
   # Music is streamed in chunks to save memory
   class Music
-    def initialize(@handle : LibRaudio::Music)
+    getter? released
+
+    private def initialize(@handle : LibRaudio::Music)
+      @released = false
     end
 
     # Load music stream from file
@@ -94,9 +97,18 @@ module Raudio
       LibRaudio.seek_music_stream(@handle, position)
     end
 
-    # Clean up resources
-    def finalize
+    def release
+      return if @released
       LibRaudio.unload_music_stream(@handle)
+      @released = true
+    end
+
+    def close
+      release
+    end
+
+    def finalize
+      release
     end
 
     # Get the underlying C struct
@@ -104,25 +116,12 @@ module Raudio
       @handle
     end
 
-    # Load music with automatic cleanup
-    #
-    # Example:
-    # ```
-    # Music.load("bgm.mp3") do |music|
-    #   music.play
-    #   loop do
-    #     music.update
-    #     break unless music.playing?
-    #     sleep 0.01
-    #   end
-    # end
-    # ```
     def self.load(filename : String | Path, &block)
       music = load(filename)
       begin
         yield music
       ensure
-        music.finalize
+        music.release
       end
     end
   end

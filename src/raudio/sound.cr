@@ -4,7 +4,10 @@ module Raudio
   # Sound represents a short audio clip loaded in memory
   # Use this for sound effects and short audio samples
   class Sound
-    def initialize(@handle : LibRaudio::Sound)
+    getter? released
+
+    private def initialize(@handle : LibRaudio::Sound, @alias : Bool = false)
+      @released = false
     end
 
     # Load sound from file
@@ -25,7 +28,7 @@ module Raudio
     # Load sound alias (uses same sample data as original)
     def self.alias(source : Sound) : self
       handle = LibRaudio.load_sound_alias(source.to_unsafe)
-      new(handle)
+      new(handle, true)
     end
 
     # Check if sound data is ready
@@ -83,14 +86,28 @@ module Raudio
       LibRaudio.set_sound_pan(@handle, pan)
     end
 
-    # Clean up resources
-    def finalize
-      LibRaudio.unload_sound(@handle)
+    def release
+      return if @released
+      if @alias
+        LibRaudio.unload_sound_alias(@handle)
+      else
+        LibRaudio.unload_sound(@handle)
+      end
+      @released = true
     end
 
-    # Unload sound alias (does not free sample data)
+    def close
+      release
+    end
+
     def unload_alias
-      LibRaudio.unload_sound_alias(@handle)
+      return unless @alias
+      release
+    end
+
+    # GC fallback
+    def finalize
+      release
     end
 
     # Get the underlying C struct
@@ -98,21 +115,12 @@ module Raudio
       @handle
     end
 
-    # Load sound with automatic cleanup
-    #
-    # Example:
-    # ```
-    # Sound.load("effect.wav") do |sound|
-    #   sound.play
-    #   sleep 1
-    # end
-    # ```
     def self.load(filename : String | Path, &block)
       sound = load(filename)
       begin
         yield sound
       ensure
-        sound.finalize
+        sound.release
       end
     end
   end

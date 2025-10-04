@@ -4,7 +4,10 @@ module Raudio
   # Wave represents raw audio data
   # Use this for loading and manipulating audio waveforms
   class Wave
-    def initialize(@handle : LibRaudio::Wave)
+    getter? released
+
+    private def initialize(@handle : LibRaudio::Wave)
+      @released = false
     end
 
     # Load wave data from file
@@ -58,9 +61,18 @@ module Raudio
       LibRaudio.wave_format(pointerof(@handle), sample_rate, sample_size, channels)
     end
 
-    # Clean up resources
-    def finalize
+    def release
+      return if @released
       LibRaudio.unload_wave(@handle)
+      @released = true
+    end
+
+    def close
+      release
+    end
+
+    def finalize
+      release
     end
 
     # Get the underlying C struct
@@ -68,20 +80,12 @@ module Raudio
       @handle
     end
 
-    # Load wave with automatic cleanup
-    #
-    # Example:
-    # ```
-    # Wave.load("sound.wav") do |wave|
-    #   # Use wave here
-    # end
-    # ```
     def self.load(filename : String | Path, &block)
       wave = load(filename)
       begin
         yield wave
       ensure
-        wave.finalize
+        wave.release
       end
     end
   end

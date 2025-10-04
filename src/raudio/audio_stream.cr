@@ -4,7 +4,10 @@ module Raudio
   # AudioStream represents a custom audio stream
   # Use this for procedural audio or custom audio processing
   class AudioStream
-    def initialize(@handle : LibRaudio::AudioStream)
+    getter? released
+
+    private def initialize(@handle : LibRaudio::AudioStream)
+      @released = false
     end
 
     # Load audio stream (to stream raw audio pcm data)
@@ -99,9 +102,18 @@ module Raudio
       LibRaudio.detach_audio_mixed_processor(processor)
     end
 
-    # Clean up resources
-    def finalize
+    def release
+      return if @released
       LibRaudio.unload_audio_stream(@handle)
+      @released = true
+    end
+
+    def close
+      release
+    end
+
+    def finalize
+      release
     end
 
     # Get the underlying C struct
