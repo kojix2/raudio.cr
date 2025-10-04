@@ -1,34 +1,34 @@
 CC ?= gcc
 
 ifeq ($(OS),Windows_NT)
-    ifeq ($(CC),cl)
-        EXT_LIB = raudio.lib
-        OBJ = raudio.obj
-        SRC = raudio/src/raudio.c
-        CFLAGS = /nologo /c /Iraudio/src /DRAUDIO_STANDALONE /DSUPPORT_FILEFORMAT_WAV /DSUPPORT_FILEFORMAT_OGG /Fo$(OBJ)
-        OUTFLAG =
-        LIB_CMD = lib /OUT:raudio.lib raudio.obj
-    else
-        EXT_LIB = libraudio.a
-        OBJ = raudio.o
-        SRC = raudio/src/raudio.c
-        CFLAGS = -c -Iraudio/src -DRAUDIO_STANDALONE -DSUPPORT_FILEFORMAT_WAV -DSUPPORT_FILEFORMAT_OGG
-        OUTFLAG = -o $(OBJ)
-        AR_CMD = ar rcs libraudio.a raudio.o
-    endif
+	ifeq ($(CC),cl)
+		EXT_LIB = raudio.lib
+		OBJ = raudio.obj
+		SRC = raudio/src/raudio.c
+		CFLAGS = /nologo /c /Iraudio/src /DRAUDIO_STANDALONE /DSUPPORT_FILEFORMAT_WAV /DSUPPORT_FILEFORMAT_OGG /Fo$(OBJ)
+		OUTFLAG =
+		LIB_CMD = lib /OUT:raudio.lib raudio.obj
+	else
+		EXT_LIB = libraudio.a
+		OBJ = raudio.o
+		SRC = raudio/src/raudio.c
+		CFLAGS = -c -Iraudio/src -DRAUDIO_STANDALONE -DSUPPORT_FILEFORMAT_WAV -DSUPPORT_FILEFORMAT_OGG
+		OUTFLAG = -o $(OBJ)
+		AR_CMD = ar rcs libraudio.a raudio.o
+	endif
 else
-    EXT_LIB = libraudio.a
-    OBJ = raudio.o
-    SRC = raudio/src/raudio.c
-    CFLAGS = -c -Iraudio/src -DRAUDIO_STANDALONE -DSUPPORT_FILEFORMAT_WAV -DSUPPORT_FILEFORMAT_OGG
-    OUTFLAG = -o $(OBJ)
-    AR_CMD = ar rcs libraudio.a raudio.o
+	EXT_LIB = libraudio.a
+	OBJ = raudio.o
+	SRC = raudio/src/raudio.c
+	CFLAGS = -c -Iraudio/src -DRAUDIO_STANDALONE -DSUPPORT_FILEFORMAT_WAV -DSUPPORT_FILEFORMAT_OGG
+	OUTFLAG = -o $(OBJ)
+	AR_CMD = ar rcs libraudio.a raudio.o
 endif
 
 all: $(EXT_LIB)
 
 raudio.obj raudio.o: $(SRC)
-    $(CC) $(CFLAGS) $(SRC) $(OUTFLAG)
+	$(CC) $(CFLAGS) $(SRC) $(OUTFLAG)
 
 raudio.lib: raudio.obj
 	$(LIB_CMD)
