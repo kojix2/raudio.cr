@@ -24,14 +24,12 @@ jobs:
         uses: ilammy/msvc-dev-cmd@v1
         with:
           arch: x64
-      - run: ls ext
-      - run: ls ext/raudio
-      - run: ls ext/raudio/src
       - name: Build native extension (POSIX/MSVC)
         run: make -C ext
         env:
           MSYS_NO_PATHCONV: "1"
           MSYS2_ARG_CONV_EXCL: "*"
+      - run: ls ext
       - name: Run specs
         run: crystal spec --error-trace
   build_MinGW64:
