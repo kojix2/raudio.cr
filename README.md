@@ -1,39 +1,99 @@
-# raudio
+# raudio.cr
 
-TODO: Write a description here
+:sound: [raudio](https://github.com/raysan5/raudio) - a simple audio library based on miniaudio - for Crystal
 
 ## Installation
 
-1. Add the dependency to your `shard.yml`:
+Add to `shard.yml`:
 
-   ```yaml
-   dependencies:
-     raudio:
-       github: your-github-user/raudio
-   ```
+```yaml
+dependencies:
+  raudio:
+    github: kojix2/raudio.cr
+```
 
-2. Run `shards install`
+Run `shards install`. The native library builds automatically.
 
 ## Usage
 
+### Audio device
+
 ```crystal
 require "raudio"
+
+Raudio::AudioDevice.open do
+  Raudio::AudioDevice.master_volume = 0.8
+end
 ```
 
-TODO: Write usage instructions here
+### Sound playback
+
+```crystal
+Raudio::AudioDevice.open do
+  sound = Raudio::Sound.load("effect.wav")
+  sound.volume = 0.5
+  sound.play
+
+  while sound.playing?
+    sleep 10.milliseconds
+  end
+end
+```
+
+### Music streaming
+
+```crystal
+Raudio::AudioDevice.init
+
+music = Raudio::Music.load("background.mp3")
+music.volume = 0.8
+music.play
+
+loop do
+  music.update
+  break unless music.playing?
+  sleep 10.milliseconds
+end
+
+Raudio::AudioDevice.close
+```
+
+### Wave data
+
+```crystal
+Raudio::AudioDevice.open do
+  wave = Raudio::Wave.load("audio.wav")
+  sound = Raudio::Sound.from_wave(wave)
+  sound.play
+  wave.export("output.wav")
+end
+```
+
+## Supported formats
+
+WAV, OGG, MP3, FLAC, QOA
+
+## API
+
+- `Raudio::AudioDevice` - audio device management
+- `Raudio::Sound` - short audio clips
+- `Raudio::Music` - streaming audio
+- `Raudio::Wave` - raw waveform data
+- `Raudio::AudioStream` - custom streaming
+
+Low-level C bindings: `Raudio::LibRaudio`
 
 ## Development
 
-TODO: Write development instructions here
+```bash
+make -C ext        # build native library
+crystal spec       # run tests
+```
 
-## Contributing
+## Examples
 
-1. Fork it (<https://github.com/your-github-user/raudio/fork>)
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+See `examples/` directory.
 
-## Contributors
+## License
 
-- [kojix2](https://github.com/your-github-user) - creator and maintainer
+MIT
