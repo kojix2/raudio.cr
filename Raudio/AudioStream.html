@@ -190,7 +190,7 @@ Use this for procedural audio or custom audio processing</p>
   </h2>
   
     
-      <a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L6" target="_blank">
+      <a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L6" target="_blank">
         raudio/audio_stream.cr
       </a>
     
@@ -198,6 +198,26 @@ Use this for procedural audio or custom audio processing</p>
   
 
 
+
+  
+    <h2>
+      <a id="constant-summary" class="anchor" href="#constant-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+      Constant Summary
+    </h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="NOOP_CALLBACK">
+        <strong>NOOP_CALLBACK</strong> = <code><span class="o">-&gt;</span>(buffer : <span class="t">Pointer</span>(<span class="t">Void</span>), frames : <span class="t">UInt32</span>) <span class="k">do</span>
+<span class="k">end</span></code>
+      </dt>
+      
+    
+  </dl>
 
 
 
@@ -281,6 +301,18 @@ Use this for procedural audio or custom audio processing</p>
         <a href="#attach_processor%28processor%3ALibRaudio%3A%3AAudioCallback%29-instance-method" class="signature"><strong>#attach_processor</strong>(processor : LibRaudio::AudioCallback)</a>
         
           <div class="summary"><p>Attach audio stream processor to stream</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#callback%3D%28cb%3ALibRaudio%3A%3AAudioCallback%29-instance-method" class="signature"><strong>#callback=</strong>(cb : LibRaudio::AudioCallback)</a>
+        
+          <div class="summary"><p>Set per-stream callback (single).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#clear_callback-instance-method" class="signature"><strong>#clear_callback</strong></a>
         
       </li>
     
@@ -455,7 +487,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L23" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -488,7 +520,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L96" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L132" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -509,7 +541,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L81" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L100" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -530,7 +562,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L101" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L138" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -551,7 +583,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L30" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -586,7 +618,44 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L86" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L105" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="callback=(cb:LibRaudio::AudioCallback)-instance-method">
+      <div class="signature">
+        
+        def <strong>callback=</strong>(cb : LibRaudio::AudioCallback)
+
+        <a class="method-permalink" href="#callback%3D%28cb%3ALibRaudio%3A%3AAudioCallback%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Set per-stream callback (single). Overwrites previous.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L119" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="clear_callback-instance-method">
+      <div class="signature">
+        
+        def <strong>clear_callback</strong>
+
+        <a class="method-permalink" href="#clear_callback-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L125" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -602,7 +671,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L111" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L157" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -623,7 +692,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L91" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L112" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -639,7 +708,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L115" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L161" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -660,7 +729,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L76" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L94" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -681,7 +750,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L46" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L58" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -702,7 +771,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L71" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L88" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -723,7 +792,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L41" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L52" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -744,7 +813,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L56" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L70" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -765,7 +834,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L46" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -786,7 +855,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L26" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L35" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -802,7 +871,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L105" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L143" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -818,7 +887,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L7" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -839,7 +908,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L51" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L64" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -860,7 +929,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L61" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L76" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -881,7 +950,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L120" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L166" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -902,7 +971,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L31" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -923,7 +992,7 @@ Use this for procedural audio or custom audio processing</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/a189584ac19772ea226d7407e370b03431b46868/src/raudio/audio_stream.cr#L66" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/97584140a385fe5473943db6b53fce0de1d8b5e2/src/raudio/audio_stream.cr#L82" target="_blank">View source</a>]
         
       </div>
     </div>
