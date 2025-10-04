@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          submodules: true
+          submodules: recursive
       - uses: crystal-lang/install-crystal@v1
         with:
           crystal: latest
@@ -41,7 +41,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          submodules: true
+          submodules: recursive
       - uses: msys2/setup-msys2@v2
         with:
           msystem: MINGW64
