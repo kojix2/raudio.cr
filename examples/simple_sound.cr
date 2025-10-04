@@ -12,7 +12,9 @@ Raudio::AudioDevice.open do
 
   # Load and play a sound with automatic cleanup
   begin
-    Raudio::Sound.load("resources/sound.wav") do |sound|
+    Raudio::Sound.load(
+      File.expand_path("../ext/raudio/examples/resources/target.ogg", __DIR__)
+    ) do |sound|
       puts "Playing sound..."
       sound.play
 
@@ -25,7 +27,6 @@ Raudio::AudioDevice.open do
     end
   rescue ex : Raudio::AudioDeviceError
     puts "Error: #{ex.message}"
-    puts "Make sure you have a sound file at examples/resources/sound.wav"
   end
 end
 
