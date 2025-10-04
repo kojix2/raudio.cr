@@ -1,5 +1,15 @@
 CC ?= gcc
 
+# MSVC -> cl
+# MinGW -> gcc
+ifeq ($(OS),Windows_NT)
+	ifdef MSYSTEM
+		CC ?= gcc
+	else
+		CC ?= cl
+	endif
+endif
+
 ifeq ($(OS),Windows_NT)
 	ifeq ($(CC),cl)
 		EXT_LIB = raudio.lib

@@ -25,10 +25,16 @@ jobs:
         with:
           arch: x64
       - name: Build native extension (POSIX/MSVC)
+        if: matrix.os == 'windows'
         run: make -C ext
         env:
+          CC: "cl"
           MSYS_NO_PATHCONV: "1"
           MSYS2_ARG_CONV_EXCL: "*"
+      - name: Build native extension (POSIX)
+        if: matrix.os != 'windows'
+        run: make -C ext
+      - run: ls ext
       - name: Run specs
         run: crystal spec --error-trace
   build_MinGW64:
