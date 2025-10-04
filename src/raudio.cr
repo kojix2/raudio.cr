@@ -1,6 +1,5 @@
-# TODO: Write documentation for `Raudio`
-module Raudio
-  VERSION = "0.1.0"
+require "./raudio/lib_raudio"
 
-  # TODO: Put your code here
+module Raudio
+  VERSION = {{ `shards version #{__DIR__}`.chomp.stringify }}
 end
