@@ -3,13 +3,28 @@
 /lib/
 /shards/
 
+/shard.lock
+
+# Examples
+music_player
+play_file
+simple_sound
+
+# Binary and object files
 *.a
 *.dSYM
 *.dll
+*.lib
 *.dwarf
 *.exe
 *.obj
 *.o
 *.so
+*.dylib
 
-/shard.lock
+# Audio files
+*.wav
+*.ogg
+*.mp3
+*.flac
+*.qoa
