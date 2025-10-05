@@ -192,6 +192,7 @@
 
 music <span class="o">=</span> <span class="t">Raudio</span><span class="t">::</span><span class="t">Music</span>.load(<span class="s">&quot;background.mp3&quot;</span>)
 music.volume <span class="o">=</span> <span class="n">0.8</span>
+music.looping <span class="o">=</span> <span class="n">false</span>  <span class="c"># Disable looping (enabled by default)</span>
 music.play
 
 loop <span class="k">do</span>
@@ -212,6 +213,30 @@ loop <span class="k">do</span>
   sound.play
   wave.export(<span class="s">&quot;output.wav&quot;</span>)
 <span class="k">end</span></code></pre>
+<h2><a id="resource-management" class="anchor" href="#resource-management">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Resource Management</h2>
+<p>Resources should be explicitly released when done, or use the block form for automatic cleanup.</p>
+<h3><a id="recommended-patterns" class="anchor" href="#recommended-patterns">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Recommended patterns:</h3>
+<pre><code class="language-crystal"><span class="c"># Block form (automatic cleanup)</span>
+<span class="t">Raudio</span><span class="t">::</span><span class="t">Sound</span>.load(<span class="s">&quot;effect.wav&quot;</span>) <span class="k">do</span> <span class="o">|</span>sound<span class="o">|</span>
+  sound.play
+<span class="k">end</span>
+
+<span class="c"># Manual release</span>
+sound <span class="o">=</span> <span class="t">Raudio</span><span class="t">::</span><span class="t">Sound</span>.load(<span class="s">&quot;effect.wav&quot;</span>)
+<span class="k">begin</span>
+  sound.play
+<span class="k">ensure</span>
+  sound.release  <span class="c"># or sound.close</span>
+<span class="k">end</span></code></pre>
+<p>Finalizers are provided as a fallback but explicit cleanup is recommended.</p>
 <h2><a id="supported-formats" class="anchor" href="#supported-formats">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
