@@ -6,7 +6,7 @@ ifeq ($(OS),Windows_NT)
 	ifdef MSYSTEM
 		CC ?= gcc
 	else
-		CC ?= cl
+		CC = cl
 	endif
 endif
 
