@@ -66,6 +66,43 @@ module Raudio
       LibRaudio.wave_format(pointerof(@handle), sample_rate, sample_size, channels)
     end
 
+    # Load wave samples as a floats array
+    # Returns a Slice of Float32 containing the sample data
+    # Note: You must manually call `unload_samples` on the returned pointer when done
+    def load_samples : Slice(Float32)
+      raise ReleasedError.new if released?
+      ptr = LibRaudio.load_wave_samples(@handle)
+      # Calculate total sample count (frames * channels)
+      sample_count = @handle.frame_count * @handle.channels
+      Slice.new(ptr, sample_count)
+    end
+
+    # Unload wave samples data
+    # Only call this on samples returned by `load_samples`
+    def self.unload_samples(samples : Slice(Float32))
+      LibRaudio.unload_wave_samples(samples.to_unsafe)
+    end
+
+    # Frame count
+    def frame_count : UInt32
+      @handle.frame_count
+    end
+
+    # Sample rate
+    def sample_rate : UInt32
+      @handle.sample_rate
+    end
+
+    # Sample size (bit depth)
+    def sample_size : UInt32
+      @handle.sample_size
+    end
+
+    # Number of channels
+    def channels : UInt32
+      @handle.channels
+    end
+
     def release
       return if @released
       LibRaudio.unload_wave(@handle)

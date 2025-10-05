@@ -95,6 +95,26 @@ module Raudio
       LibRaudio.set_sound_pan(@handle, pan)
     end
 
+    # Get frame count
+    def frame_count : UInt32
+      @handle.frame_count
+    end
+
+    # Get sample rate
+    def sample_rate : UInt32
+      @handle.stream.sample_rate
+    end
+
+    # Get sample size
+    def sample_size : UInt32
+      @handle.stream.sample_size
+    end
+
+    # Get number of channels
+    def channels : UInt32
+      @handle.stream.channels
+    end
+
     def release
       return if @released
       if @alias

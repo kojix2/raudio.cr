@@ -119,6 +119,31 @@ module Raudio
       LibRaudio.seek_music_stream(@handle, position)
     end
 
+    # Get frame count
+    def frame_count : UInt32
+      @handle.frame_count
+    end
+
+    # Get sample rate
+    def sample_rate : UInt32
+      @handle.stream.sample_rate
+    end
+
+    # Get sample size
+    def sample_size : UInt32
+      @handle.stream.sample_size
+    end
+
+    # Get number of channels
+    def channels : UInt32
+      @handle.stream.channels
+    end
+
+    # Get music context type
+    def context_type : Int32
+      @handle.ctx_type
+    end
+
     def release
       return if @released
       LibRaudio.unload_music_stream(@handle)

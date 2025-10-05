@@ -11,7 +11,9 @@ module Raudio
     # Global mixed processors retained to avoid GC
     @@mixed_processors = [] of Proc(Pointer(Void), UInt32, Nil)
 
+    # NOOP callback retained to avoid GC (used when clearing callbacks)
     NOOP_CALLBACK = ->(buffer : Pointer(Void), frames : UInt32) { }
+    @@noop_retained : Proc(Pointer(Void), UInt32, Nil) = NOOP_CALLBACK # Ensure it's never GC'd
 
     private def initialize(@handle : LibRaudio::AudioStream)
       @released = false
@@ -138,6 +140,21 @@ module Raudio
     def self.detach_mixed_processor(processor : LibRaudio::AudioCallback)
       LibRaudio.detach_audio_mixed_processor(processor)
       @@mixed_processors.delete(processor)
+    end
+
+    # Get sample rate
+    def sample_rate : UInt32
+      @handle.sample_rate
+    end
+
+    # Get sample size
+    def sample_size : UInt32
+      @handle.sample_size
+    end
+
+    # Get number of channels
+    def channels : UInt32
+      @handle.channels
     end
 
     def release
