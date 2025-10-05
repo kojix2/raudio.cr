@@ -95,7 +95,7 @@ Finalizers are provided as a fallback but explicit cleanup is recommended.
 
 ## Supported formats
 
-WAV, OGG, MP3, FLAC, QOA
+WAV, OGG, MP3, FLAC, QOA, XM, MOD
 
 ## API
 
