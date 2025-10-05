@@ -1,7 +1,7 @@
 require "../src/raudio"
 
 # Music streaming example
-# This demonstrates how to play music files with streaming
+# Demonstrates streaming playback for long audio files
 
 Raudio::AudioDevice.init
 
@@ -13,21 +13,20 @@ begin
   puts "Music loaded"
   puts "Length: #{music.length} seconds"
 
-  # Set volume to 80%
+  # Configure playback
   music.volume = 0.8
-  # Disable looping so it stops after one play
   music.looping = false
 
   # Start playing
   music.play
   puts "Playing music... (press Ctrl+C to stop)"
 
-  # Update loop - must be called regularly when playing music
+  # Update loop - required for streaming
   sec = 0
   loop do
     music.update
 
-    # Print current position every second
+    # Print progress every second
     if (s = music.time_played.to_i) > sec
       puts "Time: #{music.time_played.round(2)} / #{music.length.round(2)}"
       sec = s
@@ -38,9 +37,8 @@ begin
   end
 
   puts "Music finished"
-rescue ex : Raudio::AudioDeviceError
+rescue ex : Raudio::MusicLoadError
   puts "Error: #{ex.message}"
-  puts "Make sure you have a music file at examples/resources/music.mp3"
 ensure
   Raudio::AudioDevice.close
 end

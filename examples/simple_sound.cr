@@ -1,7 +1,7 @@
 require "../src/raudio"
 
-# Simple example: Play a sound effect
-# This demonstrates basic sound loading and playback
+# Simple sound playback example
+# Demonstrates basic sound loading and playback with automatic cleanup
 
 Raudio::AudioDevice.open do
   puts "Audio device initialized"
@@ -26,7 +26,7 @@ Raudio::AudioDevice.open do
 
       puts "Sound finished"
     end
-  rescue ex : Raudio::AudioDeviceError
+  rescue ex : Raudio::SoundLoadError
     puts "Error: #{ex.message}"
   end
 end
