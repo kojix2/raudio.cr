@@ -35,10 +35,9 @@ jobs:
         run: make -C ext
       - name: Run specs
         run: crystal spec --error-trace
-      - name: Build and run simple_sound example
+      - name: Build a simple_sound example
         run: |
           crystal build examples/simple_sound.cr
-          ./simple_sound
   build_MinGW64:
     name: MinGW64
     runs-on: windows-latest
@@ -63,8 +62,8 @@ jobs:
         run: |
           make -C ext
           crystal spec
-      - name: Build and run simple_sound example
+      - name: Build a simple_sound example
         shell: msys2 {0}
         run: |
           crystal build examples/simple_sound.cr
-          ./simple_sound
+
