@@ -17,6 +17,7 @@ simple_sound
 *.lib
 *.dwarf
 *.exe
+*.pdb
 *.obj
 *.o
 *.so
