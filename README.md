@@ -136,6 +136,6 @@ Dependencies (bundled single-header/native libraries):
   - [stb_vorbis](https://github.com/nothings/stb) – Public Domain or MIT
   - [qoa](https://github.com/phoboslab/qoa) – MIT
   - [jar_xm](https://github.com/kd7tck/jar) – WTFPL v2 – (included in source)
-  - [jar_mod](https://github.com/kd7tck/jar) – Public Domain (CC0 1.0) – (included in source)
+  - [jar_mod](https://github.com/kd7tck/jar) – WTFPL v2 – (included in source)
 
-Summary: Project code is MIT, bundled raudio is zlib, and all other bundled dependencies are permissive (Public Domain/Unlicense, MIT-0, CC0 1.0, WTFPL v2) with no copyleft obligations.
+Summary: Project code is MIT, bundled raudio is zlib, and all other bundled dependencies are permissive (Public Domain, MIT-0, MIT, WTFPL v2) with no copyleft obligations.
