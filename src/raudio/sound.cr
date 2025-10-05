@@ -42,9 +42,9 @@ module Raudio
     end
 
     # Update sound buffer with new data
-    def update(data : Pointer(Void), sample_count : Int32)
+    def update(data : Pointer(Void), frame_count : Int32)
       raise ReleasedError.new if released?
-      LibRaudio.update_sound(@handle, data, sample_count)
+      LibRaudio.update_sound(@handle, data, frame_count)
     end
 
     # Play the sound
