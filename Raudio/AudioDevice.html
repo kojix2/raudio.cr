@@ -164,6 +164,9 @@
 
   <p>Audio device management (singleton pattern)
 Handles initialization and cleanup of the audio device</p>
+<p>Note: AudioDevice operations are thread-safe, but audio playback
+operations (Sound, Music, AudioStream) should be performed from
+a single dedicated thread.</p>
 
 
 
@@ -190,7 +193,7 @@ Handles initialization and cleanup of the audio device</p>
   </h2>
   
     
-      <a href="https://github.com/kojix2/raudio.cr/blob/ab29999caff5681eb9da91bfc91c718d06a1d1e6/src/raudio/audio_device.cr#L6" target="_blank">
+      <a href="https://github.com/kojix2/raudio.cr/blob/8d9b2ec431ba4378dc62396934cebdd993c42901/src/raudio/audio_device.cr#L10" target="_blank">
         raudio/audio_device.cr
       </a>
     
@@ -215,44 +218,44 @@ Handles initialization and cleanup of the audio device</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#close-class-method" class="signature"><strong>.close</strong></a>
+        <a href="#close%3ANil-class-method" class="signature"><strong>.close</strong> : Nil</a>
         
-          <div class="summary"><p>Close the audio device This is automatically called at program exit if init was called</p></div>
+          <div class="summary"><p>Close the audio device This is automatically called at program exit if init was called Thread-safe: Can be safely called from any thread</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#init-class-method" class="signature"><strong>.init</strong></a>
+        <a href="#init%3ANil-class-method" class="signature"><strong>.init</strong> : Nil</a>
         
-          <div class="summary"><p>Initialize the audio device This is automatically called when using the block form</p></div>
+          <div class="summary"><p>Initialize the audio device This is automatically called when using the block form Thread-safe: Can be safely called from any thread</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#master_volume%3AFloat32-class-method" class="signature"><strong>.master_volume</strong> : Float32</a>
         
-          <div class="summary"><p>Get master volume (listener)</p></div>
+          <div class="summary"><p>Get master volume (listener) Thread-safe: Can be safely called from any thread</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#master_volume%3D%28volume%3AFloat32%29-class-method" class="signature"><strong>.master_volume=</strong>(volume : Float32)</a>
+        <a href="#master_volume%3D%28volume%3AFloat32%29%3ANil-class-method" class="signature"><strong>.master_volume=</strong>(volume : Float32) : Nil</a>
         
-          <div class="summary"><p>Set master volume (listener)</p></div>
+          <div class="summary"><p>Set master volume (listener) Thread-safe: Can be safely called from any thread</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#open%28%26%29-class-method" class="signature"><strong>.open</strong>(&)</a>
         
-          <div class="summary"><p>Open audio device with automatic cleanup This is the recommended way to use the audio device</p></div>
+          <div class="summary"><p>Open audio device with automatic cleanup This is the recommended way to use the audio device Thread-safe: Can be safely called from any thread</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#ready%3F%3ABool-class-method" class="signature"><strong>.ready?</strong> : Bool</a>
         
-          <div class="summary"><p>Check if audio device is ready</p></div>
+          <div class="summary"><p>Check if audio device is ready Thread-safe: Can be safely called from any thread</p></div>
         
       </li>
     
@@ -306,46 +309,48 @@ Handles initialization and cleanup of the audio device</p>
     Class Method Detail
   </h2>
   
-    <div class="entry-detail" id="close-class-method">
+    <div class="entry-detail" id="close:Nil-class-method">
       <div class="signature">
         
-        def self.<strong>close</strong>
+        def self.<strong>close</strong> : Nil
 
-        <a class="method-permalink" href="#close-class-method">#</a>
+        <a class="method-permalink" href="#close%3ANil-class-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Close the audio device
-This is automatically called at program exit if init was called</p>
+This is automatically called at program exit if init was called
+Thread-safe: Can be safely called from any thread</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/ab29999caff5681eb9da91bfc91c718d06a1d1e6/src/raudio/audio_device.cr#L20" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/8d9b2ec431ba4378dc62396934cebdd993c42901/src/raudio/audio_device.cr#L29" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="init-class-method">
+    <div class="entry-detail" id="init:Nil-class-method">
       <div class="signature">
         
-        def self.<strong>init</strong>
+        def self.<strong>init</strong> : Nil
 
-        <a class="method-permalink" href="#init-class-method">#</a>
+        <a class="method-permalink" href="#init%3ANil-class-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Initialize the audio device
-This is automatically called when using the block form</p>
+This is automatically called when using the block form
+Thread-safe: Can be safely called from any thread</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/ab29999caff5681eb9da91bfc91c718d06a1d1e6/src/raudio/audio_device.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/8d9b2ec431ba4378dc62396934cebdd993c42901/src/raudio/audio_device.cr#L17" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -360,34 +365,36 @@ This is automatically called when using the block form</p>
       
         <div class="doc">
           
-          <p>Get master volume (listener)</p>
+          <p>Get master volume (listener)
+Thread-safe: Can be safely called from any thread</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/ab29999caff5681eb9da91bfc91c718d06a1d1e6/src/raudio/audio_device.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/8d9b2ec431ba4378dc62396934cebdd993c42901/src/raudio/audio_device.cr#L55" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="master_volume=(volume:Float32)-class-method">
+    <div class="entry-detail" id="master_volume=(volume:Float32):Nil-class-method">
       <div class="signature">
         
-        def self.<strong>master_volume=</strong>(volume : Float32)
+        def self.<strong>master_volume=</strong>(volume : Float32) : Nil
 
-        <a class="method-permalink" href="#master_volume%3D%28volume%3AFloat32%29-class-method">#</a>
+        <a class="method-permalink" href="#master_volume%3D%28volume%3AFloat32%29%3ANil-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Set master volume (listener)</p>
+          <p>Set master volume (listener)
+Thread-safe: Can be safely called from any thread</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/ab29999caff5681eb9da91bfc91c718d06a1d1e6/src/raudio/audio_device.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/8d9b2ec431ba4378dc62396934cebdd993c42901/src/raudio/audio_device.cr#L47" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -403,7 +410,8 @@ This is automatically called when using the block form</p>
         <div class="doc">
           
           <p>Open audio device with automatic cleanup
-This is the recommended way to use the audio device</p>
+This is the recommended way to use the audio device
+Thread-safe: Can be safely called from any thread</p>
 <p>Example:</p>
 <pre><code class="language-crystal"><span class="t">AudioDevice</span>.open <span class="k">do</span>
   <span class="c"># Use audio here</span>
@@ -413,7 +421,7 @@ This is the recommended way to use the audio device</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/ab29999caff5681eb9da91bfc91c718d06a1d1e6/src/raudio/audio_device.cr#L50" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/8d9b2ec431ba4378dc62396934cebdd993c42901/src/raudio/audio_device.cr#L71" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -428,13 +436,14 @@ This is the recommended way to use the audio device</p>
       
         <div class="doc">
           
-          <p>Check if audio device is ready</p>
+          <p>Check if audio device is ready
+Thread-safe: Can be safely called from any thread</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/ab29999caff5681eb9da91bfc91c718d06a1d1e6/src/raudio/audio_device.cr#L27" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/8d9b2ec431ba4378dc62396934cebdd993c42901/src/raudio/audio_device.cr#L39" target="_blank">View source</a>]
         
       </div>
     </div>
