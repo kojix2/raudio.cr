@@ -121,3 +121,17 @@ See `examples/` directory.
 ## License
 
 MIT
+
+Dependencies (bundled single-header/native libraries):
+
+- [raudio](https://github.com/raysan5/raudio) (C library) – zlib
+  - [miniaudio](https://github.com/mackron/miniaudio) – Public Domain or MIT-0
+  - [dr_wav](https://github.com/mackron/dr_libs) – Public Domain or MIT-0
+  - [dr_mp3](https://github.com/mackron/dr_libs) – Public Domain or MIT-0
+  - [dr_flac](https://github.com/mackron/dr_libs) – Public Domain or MIT-0
+  - [stb_vorbis](https://github.com/nothings/stb) – Public Domain or MIT
+  - [qoa](https://github.com/phoboslab/qoa) – MIT
+  - [jar_xm](https://github.com/kd7tck/jar) – WTFPL v2 – (included in source)
+  - [jar_mod](https://github.com/kd7tck/jar) – Public Domain (CC0 1.0) – (included in source)
+
+All original copyright and license notices are preserved in `ext/raudio/src/external/`.
