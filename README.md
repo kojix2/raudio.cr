@@ -114,10 +114,6 @@ make -C ext        # build native library
 crystal spec       # run tests
 ```
 
-## Examples
-
-See `examples/` directory.
-
 ## License
 
 MIT
@@ -135,4 +131,3 @@ Dependencies (bundled single-header/native libraries):
   - [jar_mod](https://github.com/kd7tck/jar) – Public Domain (CC0 1.0) – (included in source)
 
 Summary: Project code is MIT, bundled raudio is zlib, and all other bundled dependencies are permissive (Public Domain/Unlicense, MIT-0, CC0 1.0, WTFPL v2) with no copyleft obligations.
-
