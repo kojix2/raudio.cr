@@ -15,7 +15,7 @@ ifeq ($(OS),Windows_NT)
 		EXT_LIB = raudio.lib
 		OBJ = raudio.obj
 		SRC = raudio/src/raudio.c
-		CFLAGS = /nologo /c \
+		CFLAGS = /nologo /c /O2 \
 			/Iraudio/src \
 			/DRAUDIO_STANDALONE \
 			/DSUPPORT_MODULE_RAUDIO \
@@ -43,7 +43,8 @@ ifeq ($(OS),Windows_NT)
 			-DSUPPORT_FILEFORMAT_FLAC \
 			-DSUPPORT_FILEFORMAT_QOA \
 			-DSUPPORT_FILEFORMAT_XM \
-			-DSUPPORT_FILEFORMAT_MOD
+			-DSUPPORT_FILEFORMAT_MOD \
+			-O2 -fPIC
 		OUTFLAG = -o $(OBJ)
 		AR_CMD = ar rcs libraudio.a raudio.o
 	endif
@@ -61,7 +62,8 @@ else
 		-DSUPPORT_FILEFORMAT_FLAC \
 		-DSUPPORT_FILEFORMAT_QOA \
 		-DSUPPORT_FILEFORMAT_XM \
-		-DSUPPORT_FILEFORMAT_MOD
+		-DSUPPORT_FILEFORMAT_MOD \
+		-O2 -fPIC
 	OUTFLAG = -o $(OBJ)
 	AR_CMD = ar rcs libraudio.a raudio.o
 endif
