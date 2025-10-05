@@ -111,6 +111,11 @@ module Raudio
       @processors << processor unless @processors.includes?(processor)
     end
 
+    # Attach audio stream processor to stream (block form)
+    def attach_processor(&block : Pointer(Void), UInt32 ->)
+      attach_processor(block)
+    end
+
     # Detach audio stream processor from stream
     def detach_processor(processor : LibRaudio::AudioCallback)
       raise ReleasedError.new if released?
@@ -125,6 +130,11 @@ module Raudio
       LibRaudio.set_audio_stream_callback(@handle, cb)
     end
 
+    # Set per-stream callback (block form). Overwrites previous.
+    def set_callback(&block : Pointer(Void), UInt32 ->)
+      self.callback = block
+    end
+
     def clear_callback
       raise ReleasedError.new if released?
       @stream_callback = nil
@@ -135,6 +145,11 @@ module Raudio
     def self.attach_mixed_processor(processor : LibRaudio::AudioCallback)
       LibRaudio.attach_audio_mixed_processor(processor)
       @@mixed_processors << processor unless @@mixed_processors.includes?(processor)
+    end
+
+    # Attach audio stream processor to the entire audio pipeline (block form)
+    def self.attach_mixed_processor(&block : Pointer(Void), UInt32 ->)
+      attach_mixed_processor(block)
     end
 
     # Detach audio stream processor from the entire audio pipeline
