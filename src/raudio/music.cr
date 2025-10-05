@@ -103,12 +103,15 @@ module Raudio
       LibRaudio.get_music_time_played(@handle)
     end
 
-    # Loop flag (default true in raudio)
+    # Check if music looping is enabled
     def looping? : Bool
       @handle.looping
     end
 
-    # Enable/disable looping (set false to stop at end)
+    # Set whether the music should loop when it reaches the end
+    #
+    # Note: Changes take effect when `play` is called.
+    # To change looping for already playing music, stop and restart it.
     def looping=(value : Bool)
       @handle.looping = value
     end
