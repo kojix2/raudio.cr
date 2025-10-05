@@ -4,7 +4,8 @@ module Raudio
   # AudioStream represents a custom audio stream
   # Use this for procedural audio or custom audio processing
   class AudioStream
-    getter? released
+    getter? released : Bool
+    
     @processors : Array(Proc(Pointer(Void), UInt32, Nil))
     @stream_callback : Proc(Pointer(Void), UInt32, Nil)?
 

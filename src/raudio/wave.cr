@@ -4,7 +4,7 @@ module Raudio
   # Wave represents raw audio data
   # Use this for loading and manipulating audio waveforms
   class Wave
-    getter? released
+    getter? released : Bool
 
     private def initialize(@handle : LibRaudio::Wave)
       @released = false

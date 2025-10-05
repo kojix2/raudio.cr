@@ -5,7 +5,7 @@ module Raudio
   # Use this for long audio tracks (background music, etc.)
   # Music is streamed in chunks to save memory
   class Music
-    getter? released
+    getter? released : Bool
 
     private def initialize(@handle : LibRaudio::Music)
       @released = false

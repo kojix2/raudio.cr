@@ -4,7 +4,7 @@ module Raudio
   # Sound represents a short audio clip loaded in memory
   # Use this for sound effects and short audio samples
   class Sound
-    getter? released
+    getter? released : Bool
 
     private def initialize(@handle : LibRaudio::Sound, @alias : Bool = false)
       @released = false
