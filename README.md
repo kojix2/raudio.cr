@@ -115,8 +115,11 @@ Low-level C bindings: `Raudio::LibRaudio`
 ## Development
 
 ```bash
+git clone --recursive https://github.com/kojix2/raudio.cr # submodule
 make -C ext        # build native library
 crystal spec       # run tests
+crystal build examples/simple_sound.cr
+./simple_sound     # one of the two sounds will play
 ```
 
 ## License
