@@ -191,7 +191,7 @@ Music is streamed in chunks to save memory</p>
   </h2>
   
     
-      <a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L7" target="_blank">
+      <a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L7" target="_blank">
         raudio/music.cr
       </a>
     
@@ -270,12 +270,33 @@ Music is streamed in chunks to save memory</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#channels%3AUInt32-instance-method" class="signature"><strong>#channels</strong> : UInt32</a>
+        
+          <div class="summary"><p>Get number of channels</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#close-instance-method" class="signature"><strong>#close</strong></a>
         
       </li>
     
       <li class="entry-summary">
+        <a href="#context_type%3AInt32-instance-method" class="signature"><strong>#context_type</strong> : Int32</a>
+        
+          <div class="summary"><p>Get music context type</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#finalize-instance-method" class="signature"><strong>#finalize</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#frame_count%3AUInt32-instance-method" class="signature"><strong>#frame_count</strong> : UInt32</a>
+        
+          <div class="summary"><p>Get frame count</p></div>
         
       </li>
     
@@ -356,6 +377,20 @@ Music is streamed in chunks to save memory</p>
         <a href="#resume-instance-method" class="signature"><strong>#resume</strong></a>
         
           <div class="summary"><p>Resume paused music playing</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sample_rate%3AUInt32-instance-method" class="signature"><strong>#sample_rate</strong> : UInt32</a>
+        
+          <div class="summary"><p>Get sample rate</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sample_size%3AUInt32-instance-method" class="signature"><strong>#sample_size</strong> : UInt32</a>
+        
+          <div class="summary"><p>Get sample size</p></div>
         
       </li>
     
@@ -461,7 +496,7 @@ Music is streamed in chunks to save memory</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L23" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L23" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -483,7 +518,7 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L16" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L16" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -511,7 +546,7 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L141" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L166" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -532,7 +567,7 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L30" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L30" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -551,6 +586,27 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
     Instance Method Detail
   </h2>
   
+    <div class="entry-detail" id="channels:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>channels</strong> : UInt32
+
+        <a class="method-permalink" href="#channels%3AUInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Get number of channels</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L138" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="close-instance-method">
       <div class="signature">
         
@@ -562,7 +618,28 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L128" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L153" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="context_type:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>context_type</strong> : Int32
+
+        <a class="method-permalink" href="#context_type%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Get music context type</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L143" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -578,7 +655,28 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L132" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L157" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="frame_count:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>frame_count</strong> : UInt32
+
+        <a class="method-permalink" href="#frame_count%3AUInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Get frame count</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L123" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -599,7 +697,7 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L95" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L95" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -620,7 +718,7 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L112" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L112" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -641,7 +739,7 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L107" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L107" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -662,7 +760,7 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L89" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L89" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -683,7 +781,7 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L65" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L65" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -704,7 +802,7 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L83" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L83" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -725,7 +823,7 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L40" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -746,7 +844,7 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L46" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L46" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -767,7 +865,7 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L35" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L35" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -783,7 +881,7 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L122" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L147" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -799,7 +897,7 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -820,7 +918,49 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L71" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L71" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sample_rate:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>sample_rate</strong> : UInt32
+
+        <a class="method-permalink" href="#sample_rate%3AUInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Get sample rate</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L128" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sample_size:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>sample_size</strong> : UInt32
+
+        <a class="method-permalink" href="#sample_size%3AUInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Get sample size</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L133" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -841,7 +981,7 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L117" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L117" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -862,7 +1002,7 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L59" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -883,7 +1023,7 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L101" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L101" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -904,7 +1044,7 @@ Supported formats: WAV, OGG, MP3, FLAC, XM, MOD, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L137" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L162" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -926,7 +1066,7 @@ Call this regularly (every frame) when playing music</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L53" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L53" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -947,7 +1087,7 @@ Call this regularly (every frame) when playing music</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/music.cr#L77" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/music.cr#L77" target="_blank">View source</a>]
         
       </div>
     </div>

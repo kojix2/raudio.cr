@@ -190,7 +190,7 @@ Use this for loading and manipulating audio waveforms</p>
   </h2>
   
     
-      <a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/wave.cr#L6" target="_blank">
+      <a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L6" target="_blank">
         raudio/wave.cr
       </a>
     
@@ -252,6 +252,13 @@ Use this for loading and manipulating audio waveforms</p>
         
       </li>
     
+      <li class="entry-summary">
+        <a href="#unload_samples%28samples%3ASlice%28Float32%29%29-class-method" class="signature"><strong>.unload_samples</strong>(samples : Slice(Float32))</a>
+        
+          <div class="summary"><p>Unload wave samples data Only call this on samples returned by <code><a href="../Raudio/Wave.html#load_samples%3ASlice%28Float32%29-instance-method">#load_samples</a></code></p></div>
+        
+      </li>
+    
   </ul>
 
 
@@ -267,6 +274,13 @@ Use this for loading and manipulating audio waveforms</p>
     Instance Method Summary
   </h2>
   <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#channels%3AUInt32-instance-method" class="signature"><strong>#channels</strong> : UInt32</a>
+        
+          <div class="summary"><p>Number of channels</p></div>
+        
+      </li>
     
       <li class="entry-summary">
         <a href="#close-instance-method" class="signature"><strong>#close</strong></a>
@@ -314,6 +328,20 @@ Use this for loading and manipulating audio waveforms</p>
       </li>
     
       <li class="entry-summary">
+        <a href="#frame_count%3AUInt32-instance-method" class="signature"><strong>#frame_count</strong> : UInt32</a>
+        
+          <div class="summary"><p>Frame count</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#load_samples%3ASlice%28Float32%29-instance-method" class="signature"><strong>#load_samples</strong> : Slice(Float32)</a>
+        
+          <div class="summary"><p>Load wave samples as a floats array Returns a Slice of Float32 containing the sample data Note: You must manually call <code><a href="../Raudio/Wave.html#unload_samples%28samples%3ASlice%28Float32%29%29-class-method">.unload_samples</a></code> on the returned pointer when done</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#ready%3F%3ABool-instance-method" class="signature"><strong>#ready?</strong> : Bool</a>
         
           <div class="summary"><p>Check if this wave is ready</p></div>
@@ -327,6 +355,20 @@ Use this for loading and manipulating audio waveforms</p>
     
       <li class="entry-summary">
         <a href="#released%3F%3ABool-instance-method" class="signature"><strong>#released?</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sample_rate%3AUInt32-instance-method" class="signature"><strong>#sample_rate</strong> : UInt32</a>
+        
+          <div class="summary"><p>Sample rate</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sample_size%3AUInt32-instance-method" class="signature"><strong>#sample_size</strong> : UInt32</a>
+        
+          <div class="summary"><p>Sample size (bit depth)</p></div>
         
       </li>
     
@@ -398,7 +440,7 @@ Supported formats: WAV, OGG, MP3, FLAC, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/wave.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -419,7 +461,7 @@ Supported formats: WAV, OGG, MP3, FLAC, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/wave.cr#L22" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L22" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -447,7 +489,7 @@ Supported formats: WAV, OGG, MP3, FLAC, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/wave.cr#L88" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L125" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -468,7 +510,29 @@ Supported formats: WAV, OGG, MP3, FLAC, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/wave.cr#L29" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unload_samples(samples:Slice(Float32))-class-method">
+      <div class="signature">
+        
+        def self.<strong>unload_samples</strong>(samples : Slice(Float32))
+
+        <a class="method-permalink" href="#unload_samples%28samples%3ASlice%28Float32%29%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Unload wave samples data
+Only call this on samples returned by <code><a href="../Raudio/Wave.html#load_samples%3ASlice%28Float32%29-instance-method">#load_samples</a></code></p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L82" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -487,6 +551,27 @@ Supported formats: WAV, OGG, MP3, FLAC, QOA</p>
     Instance Method Detail
   </h2>
   
+    <div class="entry-detail" id="channels:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>channels</strong> : UInt32
+
+        <a class="method-permalink" href="#channels%3AUInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Number of channels</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L102" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="close-instance-method">
       <div class="signature">
         
@@ -498,7 +583,7 @@ Supported formats: WAV, OGG, MP3, FLAC, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/wave.cr#L75" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L112" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -519,7 +604,7 @@ Supported formats: WAV, OGG, MP3, FLAC, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/wave.cr#L51" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L51" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -540,7 +625,7 @@ Supported formats: WAV, OGG, MP3, FLAC, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/wave.cr#L58" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L58" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -561,7 +646,7 @@ Supported formats: WAV, OGG, MP3, FLAC, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/wave.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L39" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -582,7 +667,7 @@ Supported formats: WAV, OGG, MP3, FLAC, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/wave.cr#L45" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L45" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -598,7 +683,7 @@ Supported formats: WAV, OGG, MP3, FLAC, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/wave.cr#L79" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L116" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -619,7 +704,51 @@ Supported formats: WAV, OGG, MP3, FLAC, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/wave.cr#L64" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L64" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="frame_count:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>frame_count</strong> : UInt32
+
+        <a class="method-permalink" href="#frame_count%3AUInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Frame count</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L87" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="load_samples:Slice(Float32)-instance-method">
+      <div class="signature">
+        
+        def <strong>load_samples</strong> : Slice(Float32)
+
+        <a class="method-permalink" href="#load_samples%3ASlice%28Float32%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Load wave samples as a floats array
+Returns a Slice of Float32 containing the sample data
+Note: You must manually call <code><a href="../Raudio/Wave.html#unload_samples%28samples%3ASlice%28Float32%29%29-class-method">.unload_samples</a></code> on the returned pointer when done</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L72" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -640,7 +769,7 @@ Supported formats: WAV, OGG, MP3, FLAC, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/wave.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L34" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -656,7 +785,7 @@ Supported formats: WAV, OGG, MP3, FLAC, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/wave.cr#L69" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L106" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -672,7 +801,49 @@ Supported formats: WAV, OGG, MP3, FLAC, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/wave.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L7" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sample_rate:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>sample_rate</strong> : UInt32
+
+        <a class="method-permalink" href="#sample_rate%3AUInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sample rate</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L92" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sample_size:UInt32-instance-method">
+      <div class="signature">
+        
+        def <strong>sample_size</strong> : UInt32
+
+        <a class="method-permalink" href="#sample_size%3AUInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sample size (bit depth)</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L97" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -693,7 +864,7 @@ Supported formats: WAV, OGG, MP3, FLAC, QOA</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/557f123d2794d3f68c3f48b5dccc390c69d22972/src/raudio/wave.cr#L84" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/4cd3fe0fa1129d726ade076b27d215d14bb9d268/src/raudio/wave.cr#L121" target="_blank">View source</a>]
         
       </div>
     </div>
