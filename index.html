@@ -264,8 +264,11 @@ sound <span class="o">=</span> <span class="t">Raudio</span><span class="t">::</
     <use href="#octicon-link"/>
   </svg>
 </a>Development</h2>
-<pre><code class="language-bash">make -C ext        # build native library
-crystal spec       # run tests</code></pre>
+<pre><code class="language-bash">git clone --recursive https://github.com/kojix2/raudio.cr # submodule
+make -C ext        # build native library
+crystal spec       # run tests
+crystal build examples/simple_sound.cr
+./simple_sound     # one of the two sounds will play</code></pre>
 <h2><a id="license" class="anchor" href="#license">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
