@@ -1,8 +1,8 @@
 require "./spec_helper"
 
 describe Raudio do
-  it "has a version number" do
-    Raudio::VERSION.should be_a(String)
+  it "has a version number in format x.y.z" do
+    Raudio::VERSION.should match(/^(\d+\.){2}\d+$/)
   end
 
   describe Raudio::AudioDevice do
