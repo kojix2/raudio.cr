@@ -47,6 +47,7 @@ Raudio::AudioDevice.init
 
 music = Raudio::Music.load("background.mp3")
 music.volume = 0.8
+music.looping = false  # Disable looping (enabled by default)
 music.play
 
 loop do
@@ -68,6 +69,29 @@ Raudio::AudioDevice.open do
   wave.export("output.wav")
 end
 ```
+
+## Resource Management
+
+Resources should be explicitly released when done, or use the block form for automatic cleanup.
+
+### Recommended patterns:
+
+```crystal
+# Block form (automatic cleanup)
+Raudio::Sound.load("effect.wav") do |sound|
+  sound.play
+end
+
+# Manual release
+sound = Raudio::Sound.load("effect.wav")
+begin
+  sound.play
+ensure
+  sound.release  # or sound.close
+end
+```
+
+Finalizers are provided as a fallback but explicit cleanup is recommended.
 
 ## Supported formats
 
