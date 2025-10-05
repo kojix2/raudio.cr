@@ -1,5 +1,8 @@
 # raudio.cr
 
+[![test](https://github.com/kojix2/raudio.cr/actions/workflows/ci.yml/badge.svg)](https://github.com/kojix2/raudio.cr/actions/workflows/ci.yml)
+[![Lines of Code](https://img.shields.io/endpoint?url=https%3A%2F%2Ftokei.kojix2.net%2Fbadge%2Fgithub%2Fkojix2%2Fraudio.cr%2Flines)](https://tokei.kojix2.net/github/kojix2/raudio.cr)
+
 :sound: [raudio](https://github.com/raysan5/raudio) - a simple audio library based on miniaudio - for Crystal
 
 ## Installation
@@ -106,6 +109,8 @@ WAV, OGG, MP3, FLAC, QOA, XM, MOD
 - `Raudio::AudioStream` - custom streaming
 
 Low-level C bindings: `Raudio::LibRaudio`
+
+[API Documentation](https://kojix2.github.io/raudio.cr/)
 
 ## Development
 
