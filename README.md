@@ -96,6 +96,13 @@ end
 
 Finalizers are provided as a fallback but explicit cleanup is recommended.
 
+## Playback model (practical)
+
+- Non-blocking: `Sound#play` / `Music#play` return immediately. Mixing/output is done on a separate audio thread (miniaudio).
+- Streaming: Call `Music#update` regularly (e.g. once per frame/tick) to refill the buffer and avoid underruns/stutter.
+- Threading: The library synchronizes internally, but treat the public API as single-threaded. Prefer calling all raudio APIs from one thread (usually the main thread). If you call from multiple threads/fibers, serialize at a higher level.
+- Device lifetime: After `AudioDevice.init` (or inside `AudioDevice.open`), the device keeps running until `AudioDevice.close`.
+
 ## Supported formats
 
 WAV, OGG, MP3, FLAC, QOA, XM, MOD
