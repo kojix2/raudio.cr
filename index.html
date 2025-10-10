@@ -239,6 +239,17 @@ sound <span class="o">=</span> <span class="t">Raudio</span><span class="t">::</
   sound.release  <span class="c"># or sound.close</span>
 <span class="k">end</span></code></pre>
 <p>Finalizers are provided as a fallback but explicit cleanup is recommended.</p>
+<h2><a id="playback-model-practical" class="anchor" href="#playback-model-practical">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Playback model (practical)</h2>
+<ul>
+<li>Non-blocking: <code>Sound#play</code> / <code>Music#play</code> return immediately. Mixing/output is done on a separate audio thread (miniaudio).</li>
+<li>Streaming: Call <code>Music#update</code> regularly (e.g. once per frame/tick) to refill the buffer and avoid underruns/stutter.</li>
+<li>Threading: The library synchronizes internally, but treat the public API as single-threaded. Prefer calling all raudio APIs from one thread (usually the main thread). If you call from multiple threads/fibers, serialize at a higher level.</li>
+<li>Device lifetime: After <code>AudioDevice.init</code> (or inside <code>AudioDevice.open</code>), the device keeps running until <code>AudioDevice.close</code>.</li>
+</ul>
 <h2><a id="supported-formats" class="anchor" href="#supported-formats">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
