@@ -13,6 +13,9 @@ CFLAGS   ?=
 EXTRA_CPPFLAGS ?=
 EXTRA_CFLAGS   ?=
 
+# Default target
+.DEFAULT_GOAL := all
+
 # MSVC -> cl
 # MinGW -> gcc
 ifeq ($(OS),Windows_NT)
