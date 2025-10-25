@@ -2,6 +2,11 @@ CC ?= gcc
 AR ?= ar
 RANLIB ?= ranlib
 
+# raudio repository
+RAUDIO_REPO ?= https://github.com/raysan5/raudio.git
+RAUDIO_BRANCH ?= master
+RAUDIO_DIR = raudio
+
 # Common flags
 CPPFLAGS ?=
 CFLAGS   ?=
@@ -90,9 +95,25 @@ else
 	endif
 endif
 
-all: $(EXT_LIB)
+# Ensure raudio directory exists and is populated
+check-raudio:
+	@if [ ! -f "$(RAUDIO_DIR)/src/raudio.c" ]; then \
+		if [ -f "../.git" ] || [ -d "../.git" ]; then \
+			echo "Initializing raudio submodule..."; \
+			cd .. && git submodule update --init --recursive; \
+		else \
+			echo "raudio source not found. Cloning from $(RAUDIO_REPO)..."; \
+			$(RM) -rf $(RAUDIO_DIR); \
+			git clone --depth 1 --branch $(RAUDIO_BRANCH) $(RAUDIO_REPO) $(RAUDIO_DIR); \
+		fi; \
+	fi
 
-raudio.obj raudio.o: $(SRC)
+all: check-raudio $(EXT_LIB)
+
+# Ensure the library build waits for check-raudio
+$(EXT_LIB): check-raudio
+
+raudio.obj raudio.o: check-raudio $(SRC)
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(SRC) $(OUTFLAG)
 
 
@@ -123,4 +144,4 @@ install: all
 uninstall:
 	-@rm -f $(DESTDIR)$(LIBDIR)/$(EXT_LIB)
 
-.PHONY: all clean install uninstall
+.PHONY: all check-raudio clean install uninstall
