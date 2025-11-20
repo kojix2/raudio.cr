@@ -10,6 +10,10 @@ module Raudio
     @stream_callback : Proc(Pointer(Void), UInt32, Nil)?
 
     # Global mixed processors retained to avoid GC
+    # NOTE: This array is mutated from class methods and thus shared
+    # across all threads. Protect it with a Mutex to avoid data races
+    # when using -Dpreview_mt / ExecutionContext::Parallel.
+    @@mixed_processors_mutex = Mutex.new
     @@mixed_processors = [] of Proc(Pointer(Void), UInt32, Nil)
 
     # NOOP callback retained to avoid GC (used when clearing callbacks)
@@ -143,8 +147,10 @@ module Raudio
 
     # Attach audio stream processor to the entire audio pipeline
     def self.attach_mixed_processor(processor : LibRaudio::AudioCallback)
-      LibRaudio.attach_audio_mixed_processor(processor)
-      @@mixed_processors << processor unless @@mixed_processors.includes?(processor)
+      @@mixed_processors_mutex.synchronize do
+        LibRaudio.attach_audio_mixed_processor(processor)
+        @@mixed_processors << processor unless @@mixed_processors.includes?(processor)
+      end
     end
 
     # Attach audio stream processor to the entire audio pipeline (block form)
@@ -154,8 +160,10 @@ module Raudio
 
     # Detach audio stream processor from the entire audio pipeline
     def self.detach_mixed_processor(processor : LibRaudio::AudioCallback)
-      LibRaudio.detach_audio_mixed_processor(processor)
-      @@mixed_processors.delete(processor)
+      @@mixed_processors_mutex.synchronize do
+        LibRaudio.detach_audio_mixed_processor(processor)
+        @@mixed_processors.delete(processor)
+      end
     end
 
     # Get sample rate
