@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Crystal Docs 1.18.2">
+<meta name="generator" content="Crystal Docs 1.19.1">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="raudio">
 
@@ -164,9 +164,9 @@
 
   <p>Audio device management (singleton pattern)
 Handles initialization and cleanup of the audio device</p>
-<p>Note: AudioDevice operations are thread-safe, but audio playback
-operations (Sound, Music, AudioStream) should be performed from
-a single dedicated thread.</p>
+<p>Note: AudioDevice lifetime operations are synchronized for use from
+multiple fibers/threads. Individual audio resources should still be
+owned and updated from a dedicated audio/game context.</p>
 
 
 
@@ -193,7 +193,7 @@ a single dedicated thread.</p>
   </h2>
   
     
-      <a href="https://github.com/kojix2/raudio.cr/blob/482e770cf21f3f682f793302ea8a60c79fa001e0/src/raudio/audio_device.cr#L10" target="_blank">
+      <a href="https://github.com/kojix2/raudio.cr/blob/1b6d045631d19a12e55e0b543b417842443e1d4c/src/raudio/audio_device.cr#L10" target="_blank">
         raudio/audio_device.cr
       </a>
     
@@ -327,7 +327,7 @@ Thread-safe: Can be safely called from any thread</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/482e770cf21f3f682f793302ea8a60c79fa001e0/src/raudio/audio_device.cr#L29" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/1b6d045631d19a12e55e0b543b417842443e1d4c/src/raudio/audio_device.cr#L31" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -350,7 +350,7 @@ Thread-safe: Can be safely called from any thread</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/482e770cf21f3f682f793302ea8a60c79fa001e0/src/raudio/audio_device.cr#L17" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/1b6d045631d19a12e55e0b543b417842443e1d4c/src/raudio/audio_device.cr#L19" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -372,7 +372,7 @@ Thread-safe: Can be safely called from any thread</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/482e770cf21f3f682f793302ea8a60c79fa001e0/src/raudio/audio_device.cr#L55" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/1b6d045631d19a12e55e0b543b417842443e1d4c/src/raudio/audio_device.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -394,7 +394,7 @@ Thread-safe: Can be safely called from any thread</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/482e770cf21f3f682f793302ea8a60c79fa001e0/src/raudio/audio_device.cr#L47" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/1b6d045631d19a12e55e0b543b417842443e1d4c/src/raudio/audio_device.cr#L51" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -421,7 +421,7 @@ Thread-safe: Can be safely called from any thread</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/482e770cf21f3f682f793302ea8a60c79fa001e0/src/raudio/audio_device.cr#L71" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/1b6d045631d19a12e55e0b543b417842443e1d4c/src/raudio/audio_device.cr#L75" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -443,7 +443,7 @@ Thread-safe: Can be safely called from any thread</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/raudio.cr/blob/482e770cf21f3f682f793302ea8a60c79fa001e0/src/raudio/audio_device.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/raudio.cr/blob/1b6d045631d19a12e55e0b543b417842443e1d4c/src/raudio/audio_device.cr#L43" target="_blank">View source</a>]
         
       </div>
     </div>

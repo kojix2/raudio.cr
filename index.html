@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Crystal Docs 1.18.2">
+<meta name="generator" content="Crystal Docs 1.19.1">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="raudio">
 
@@ -247,8 +247,10 @@ sound <span class="o">=</span> <span class="t">Raudio</span><span class="t">::</
 <ul>
 <li>Non-blocking: <code>Sound#play</code> / <code>Music#play</code> return immediately. Mixing/output is done on a separate audio thread (miniaudio).</li>
 <li>Streaming: Call <code>Music#update</code> regularly (e.g. once per frame/tick) to refill the buffer and avoid underruns/stutter.</li>
-<li>Threading: The library synchronizes internally, but treat the public API as single-threaded. Prefer calling all raudio APIs from one thread (usually the main thread). If you call from multiple threads/fibers, serialize at a higher level.</li>
-<li>Device lifetime: After <code>AudioDevice.init</code> (or inside <code>AudioDevice.open</code>), the device keeps running until <code>AudioDevice.close</code>.</li>
+<li>Threading: <code>AudioDevice</code> lifetime operations are synchronized, and nested/concurrent <code>AudioDevice.open</code> blocks are reference-counted. Individual <code>Sound</code>, <code>Music</code>, <code>Wave</code>, and <code>AudioStream</code> handles should be owned from one audio/game context.</li>
+<li>ExecutionContext: With <code>Fiber::ExecutionContext::Parallel</code>, prefer sending audio commands through a <code>Channel</code> to a dedicated owner fiber or <code>ExecutionContext::Isolated</code> loop. This keeps resource release, <code>Music#update</code>, and playback state changes serialized without adding broad locks to every audio call.</li>
+<li>Callbacks: <code>AudioStream</code> callbacks/processors run from the audio backend thread. Keep them short and synchronize any shared application data yourself.</li>
+<li>Device lifetime: After <code>AudioDevice.init</code>, the device keeps running until <code>AudioDevice.close</code>. With <code>AudioDevice.open</code>, the device closes when the last active open block exits.</li>
 </ul>
 <h2><a id="supported-formats" class="anchor" href="#supported-formats">
   <svg class="octicon-link" aria-hidden="true">
