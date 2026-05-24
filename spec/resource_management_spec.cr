@@ -23,6 +23,38 @@ describe "Resource management (Sound/Music)" do
       end
     end
 
+    it "keeps the audio device open until concurrent open blocks finish" do
+      {% if flag?(:execution_context) %}
+        Fiber::ExecutionContext.default.resize(4)
+      {% end %}
+
+      done = Channel(Exception?).new
+
+      8.times do
+        spawn do
+          begin
+            Raudio::AudioDevice.open do
+              10.times do
+                Raudio::AudioDevice.ready?.should be_true
+                sleep 1.millisecond
+              end
+            end
+            done.send(nil)
+          rescue ex
+            done.send(ex)
+          end
+        end
+      end
+
+      8.times do
+        if ex = done.receive
+          raise ex
+        end
+      end
+
+      Raudio::AudioDevice.ready?.should be_false
+    end
+
     it "releases Music automatically in block form" do
       Raudio::AudioDevice.open do
         music_ref : Raudio::Music? = nil

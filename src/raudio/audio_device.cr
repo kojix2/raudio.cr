@@ -4,12 +4,14 @@ module Raudio
   # Audio device management (singleton pattern)
   # Handles initialization and cleanup of the audio device
   #
-  # Note: AudioDevice operations are thread-safe, but audio playback
-  # operations (Sound, Music, AudioStream) should be performed from
-  # a single dedicated thread.
+  # Note: AudioDevice lifetime operations are synchronized for use from
+  # multiple fibers/threads. Individual audio resources should still be
+  # owned and updated from a dedicated audio/game context.
   class AudioDevice
     @@mutex = Mutex.new
     @@initialized = false
+    @@open_count = 0
+    @@at_exit_registered = false
 
     # Initialize the audio device
     # This is automatically called when using the block form
@@ -20,7 +22,7 @@ module Raudio
         LibRaudio.init_audio_device
         @@initialized = true
       end
-      at_exit { close }
+      register_at_exit
     end
 
     # Close the audio device
@@ -29,8 +31,10 @@ module Raudio
     def self.close : Nil
       @@mutex.synchronize do
         return unless @@initialized
+        return if @@open_count > 0
         LibRaudio.close_audio_device
         @@initialized = false
+        @@open_count = 0
       end
     end
 
@@ -69,11 +73,41 @@ module Raudio
     # end
     # ```
     def self.open(&)
-      init
+      acquire
       begin
         yield
       ensure
-        close
+        release_open
+      end
+    end
+
+    private def self.acquire : Nil
+      @@mutex.synchronize do
+        unless @@initialized
+          LibRaudio.init_audio_device
+          @@initialized = true
+        end
+        @@open_count += 1
+      end
+      register_at_exit
+    end
+
+    private def self.register_at_exit : Nil
+      @@mutex.synchronize do
+        return if @@at_exit_registered
+        @@at_exit_registered = true
+      end
+
+      at_exit { close }
+    end
+
+    private def self.release_open : Nil
+      @@mutex.synchronize do
+        return if @@open_count <= 0
+        @@open_count -= 1
+        return unless @@open_count == 0 && @@initialized
+        LibRaudio.close_audio_device
+        @@initialized = false
       end
     end
   end

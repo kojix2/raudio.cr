@@ -100,8 +100,10 @@ Finalizers are provided as a fallback but explicit cleanup is recommended.
 
 - Non-blocking: `Sound#play` / `Music#play` return immediately. Mixing/output is done on a separate audio thread (miniaudio).
 - Streaming: Call `Music#update` regularly (e.g. once per frame/tick) to refill the buffer and avoid underruns/stutter.
-- Threading: The library synchronizes internally, but treat the public API as single-threaded. Prefer calling all raudio APIs from one thread (usually the main thread). If you call from multiple threads/fibers, serialize at a higher level.
-- Device lifetime: After `AudioDevice.init` (or inside `AudioDevice.open`), the device keeps running until `AudioDevice.close`.
+- Threading: `AudioDevice` lifetime operations are synchronized, and nested/concurrent `AudioDevice.open` blocks are reference-counted. Individual `Sound`, `Music`, `Wave`, and `AudioStream` handles should be owned from one audio/game context.
+- ExecutionContext: With `Fiber::ExecutionContext::Parallel`, prefer sending audio commands through a `Channel` to a dedicated owner fiber or `ExecutionContext::Isolated` loop. This keeps resource release, `Music#update`, and playback state changes serialized without adding broad locks to every audio call.
+- Callbacks: `AudioStream` callbacks/processors run from the audio backend thread. Keep them short and synchronize any shared application data yourself.
+- Device lifetime: After `AudioDevice.init`, the device keeps running until `AudioDevice.close`. With `AudioDevice.open`, the device closes when the last active open block exits.
 
 ## Supported formats
 
