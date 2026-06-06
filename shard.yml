@@ -7,6 +7,6 @@ authors:
 crystal: '>= 1.17.1'
 
 scripts:
-  postinstall: make -C ext
+  postinstall: make -C ext all
 
 license: MIT

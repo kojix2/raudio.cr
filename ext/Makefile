@@ -1,6 +1,8 @@
 CC ?= gcc
 AR ?= ar
 RANLIB ?= ranlib
+# BusyBox make does not define RM.
+RM ?= rm
 
 # raudio repository
 RAUDIO_REPO ?= https://github.com/raysan5/raudio.git
@@ -13,7 +15,7 @@ CFLAGS   ?=
 EXTRA_CPPFLAGS ?=
 EXTRA_CFLAGS   ?=
 
-# Default target
+# BusyBox make ignores .DEFAULT_GOAL, so keep all first.
 .DEFAULT_GOAL := all
 
 # MSVC -> cl
@@ -98,6 +100,8 @@ else
 	endif
 endif
 
+all: check-raudio $(EXT_LIB)
+
 # Ensure raudio directory exists and is populated
 check-raudio:
 	@if [ ! -f "$(RAUDIO_DIR)/src/raudio.c" ]; then \
@@ -110,8 +114,6 @@ check-raudio:
 			git clone --depth 1 --branch $(RAUDIO_BRANCH) $(RAUDIO_REPO) $(RAUDIO_DIR); \
 		fi; \
 	fi
-
-all: check-raudio $(EXT_LIB)
 
 # Ensure the library build waits for check-raudio
 $(EXT_LIB): check-raudio
