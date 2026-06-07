@@ -2,6 +2,7 @@
 /docs/
 /lib/
 /shards/
+/ext/build/
 
 /shard.lock
 
