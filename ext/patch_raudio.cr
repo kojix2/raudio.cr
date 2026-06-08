@@ -11,8 +11,8 @@ source = File.read(source_path)
 
 # Keep the match loose enough for whitespace-only upstream changes, but fail if
 # the TRACELOG shape changes so much that this local patch may no longer apply.
-original_trace_log_pattern = /^([ \t]*#[ \t]*define[ \t]+TRACELOG\(level,[ \t]*\.\.\.\)[ \t]+)printf[ \t]*\([ \t]*__VA_ARGS__[ \t]*\)[ \t]*$/m
-patched_trace_log_pattern = /^[ \t]*#[ \t]*define[ \t]+TRACELOG\(level,[ \t]*\.\.\.\)[ \t]+.*\[raudio\].*fflush[ \t]*\([ \t]*stdout[ \t]*\).*$/m
+original_trace_log_pattern = /^([ \t]*#[ \t]*define[ \t]+TRACELOG\(level,[ \t]*\.\.\.\)[ \t]+)printf[ \t]*\([ \t]*__VA_ARGS__[ \t]*\)[ \t]*\r?$/m
+patched_trace_log_pattern = /^[ \t]*#[ \t]*define[ \t]+TRACELOG\(level,[ \t]*\.\.\.\)[ \t]+.*\[raudio\].*fflush[ \t]*\([ \t]*stdout[ \t]*\).*\r?$/m
 patched_trace_log = "\\1do { printf(\"[raudio] \"); printf(__VA_ARGS__); printf(\"\\n\"); fflush(stdout); } while (0)"
 
 patched =
