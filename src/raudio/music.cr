@@ -166,7 +166,7 @@ module Raudio
       @handle
     end
 
-    def self.load(filename : String | Path, &block)
+    def self.load(filename : String | Path, &)
       music = load(filename)
       begin
         yield music

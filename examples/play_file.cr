@@ -9,7 +9,7 @@ source_path = File.expand_path(ARGV.first)
 
 Raudio::AudioDevice.init
 
-Signal::INT.trap do
+Process.on_terminate do
   STDERR.puts "\nStopping..."
   Raudio::AudioDevice.close
   exit

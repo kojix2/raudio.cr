@@ -17,9 +17,11 @@ describe "Resource management (Sound/Music)" do
         end
 
         # After block, resource should be released
-        sound_ref.should_not be_nil
-        sound_ref.not_nil!.released?.should be_true
-        expect_raises(Raudio::ReleasedError) { sound_ref.not_nil!.volume = 0.5_f32 }
+        sound = sound_ref
+        sound.should_not be_nil
+        sound = sound || raise "sound was not captured"
+        sound.released?.should be_true
+        expect_raises(Raudio::ReleasedError) { sound.volume = 0.5_f32 }
       end
     end
 
@@ -63,9 +65,11 @@ describe "Resource management (Sound/Music)" do
           music.ready?.should be_true
         end
 
-        music_ref.should_not be_nil
-        music_ref.not_nil!.released?.should be_true
-        expect_raises(Raudio::ReleasedError) { music_ref.not_nil!.volume = 0.5_f32 }
+        music = music_ref
+        music.should_not be_nil
+        music = music || raise "music was not captured"
+        music.released?.should be_true
+        expect_raises(Raudio::ReleasedError) { music.volume = 0.5_f32 }
       end
     end
 

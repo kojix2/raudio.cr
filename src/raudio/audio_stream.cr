@@ -17,7 +17,7 @@ module Raudio
     @@mixed_processors = [] of Proc(Pointer(Void), UInt32, Nil)
 
     # NOOP callback retained to avoid GC (used when clearing callbacks)
-    NOOP_CALLBACK = ->(buffer : Pointer(Void), frames : UInt32) { }
+    NOOP_CALLBACK = ->(_buffer : Pointer(Void), _frames : UInt32) { }
     @@noop_retained : Proc(Pointer(Void), UInt32, Nil) = NOOP_CALLBACK # Ensure it's never GC'd
 
     private def initialize(@handle : LibRaudio::AudioStream)
@@ -184,10 +184,10 @@ module Raudio
     def release
       return if @released
       # Detach retained callbacks so C side stops referencing them
-      @processors.each do |p|
-        LibRaudio.detach_audio_stream_processor(@handle, p)
+      @processors.each do |processor|
+        LibRaudio.detach_audio_stream_processor(@handle, processor)
       end
-      if cb = @stream_callback
+      if @stream_callback
         LibRaudio.set_audio_stream_callback(@handle, NOOP_CALLBACK)
         @stream_callback = nil
       end

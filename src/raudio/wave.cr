@@ -122,7 +122,7 @@ module Raudio
       @handle
     end
 
-    def self.load(filename : String | Path, &block)
+    def self.load(filename : String | Path, &)
       wave = load(filename)
       begin
         yield wave
